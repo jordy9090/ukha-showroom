@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+
 export type Piece = {
   id: string;
   collectionSlug: string;
@@ -24,19 +27,23 @@ export type Collection = {
   slug: string;
   title: string;
   handwrittenTitleImage?: string;
+  coverImage?: string;
   description: string;
   pieces: Piece[];
 };
 
-// Replace these placeholder image paths with real files in /public/images/ukha.
-// Logo: /public/images/ukha/logo.svg or .png
-// Handwritten collection title: /public/images/ukha/collections/liminal-title.png
-// Product photos: /public/images/ukha/pieces/{piece-id}-{number}.jpg
+const ukhaImage = (filename: string) => {
+  const assetPath = path.join(process.cwd(), "public", "images", "ukha", filename);
+
+  return existsSync(assetPath) ? `/images/ukha/${filename}` : "";
+};
+
 export const collections: Collection[] = [
   {
     slug: "liminal",
     title: "liminal",
     handwrittenTitleImage: "",
+    coverImage: ukhaImage("liminal-cover.png"),
     description:
       "Rings and small objects held between threshold, memory, and quiet daily ritual.",
     pieces: [
@@ -49,7 +56,7 @@ export const collections: Collection[] = [
           "A low, softened ridge traces the finger like a line found after the surface has settled.",
         material: "Sterling silver, hand finished",
         price: "Price on inquiry",
-        images: [],
+        images: [ukhaImage("liminal-ring-01.png")].filter(Boolean),
       },
       {
         id: "liminal-ring-02",
@@ -60,7 +67,7 @@ export const collections: Collection[] = [
           "An intentionally restrained contour, shaped to feel present without becoming loud.",
         material: "Sterling silver, matte polish",
         price: "Price on inquiry",
-        images: [],
+        images: [ukhaImage("liminal-ring-02.png")].filter(Boolean),
       },
       {
         id: "liminal-ring-03",
@@ -71,7 +78,7 @@ export const collections: Collection[] = [
           "A hollowed form that keeps shadow close to the hand, made for slow inspection.",
         material: "Sterling silver, oxidized detail",
         price: "Price on inquiry",
-        images: [],
+        images: [ukhaImage("liminal-ring-03.png")].filter(Boolean),
       },
     ],
   },

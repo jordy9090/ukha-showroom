@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -15,10 +16,14 @@ export default function Home() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
-          {/* Replace this text mark with /public/images/ukha/logo.svg or .png when the final UKHA logo is ready. */}
-          <div className="font-serif text-6xl tracking-[0.22em] sm:text-8xl">
-            UKHA
-          </div>
+          <Image
+            src="/images/ukha/logo-home.png"
+            alt="UKHA"
+            width={1720}
+            height={1060}
+            priority
+            className="h-auto w-[min(76vw,520px)] mix-blend-multiply"
+          />
         </motion.div>
       </Link>
     </main>

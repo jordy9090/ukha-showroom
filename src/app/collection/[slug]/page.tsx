@@ -50,17 +50,9 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
                 }`}
                 priority={index === 0}
               />
-              <div className="mt-4 flex items-baseline justify-between gap-4 text-sm">
-                <h2 className="font-serif text-xl tracking-[0.04em]">
-                  {piece.title}
-                </h2>
-                <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--muted)] transition group-hover:text-[var(--foreground)]">
-                  view
-                </span>
-              </div>
-              <p className="mt-1 text-sm text-[var(--muted)]">
-                {piece.subtitle}
-              </p>
+              <h2 className="mt-4 font-serif text-xl tracking-[0.04em] transition group-hover:text-[var(--muted)]">
+                {piece.title}
+              </h2>
             </Link>
           ))}
         </section>

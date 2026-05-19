@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { CollectionTitle } from "@/components/CollectionTitle";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
@@ -18,15 +19,20 @@ export default function CollectionPage() {
               <Link
                 key={collection.slug}
                 href={`/collection/${collection.slug}`}
-                className="group flex flex-col items-center gap-5"
+                className="group flex flex-col items-center gap-8"
               >
+                {collection.coverImage ? (
+                  <ArtworkFrame
+                    src={collection.coverImage}
+                    alt={`${collection.title} collection image`}
+                    className="aspect-[4/3] w-full max-w-xl"
+                    priority
+                  />
+                ) : null}
                 <CollectionTitle
                   title={collection.title}
                   handwrittenTitleImage={collection.handwrittenTitleImage}
                 />
-                <span className="max-w-md text-sm leading-7 text-[var(--muted)] transition group-hover:text-[var(--foreground)]">
-                  {collection.description}
-                </span>
               </Link>
             ))}
           </div>
