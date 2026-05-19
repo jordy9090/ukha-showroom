@@ -50,7 +50,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
                 }`}
                 priority={index === 0}
               />
-              <h2 className="mt-4 font-serif text-xl tracking-[0.04em] transition group-hover:text-[var(--muted)]">
+              <h2 className="mt-4 font-serif text-xl tracking-[0.04em]">
                 {piece.title}
               </h2>
             </Link>

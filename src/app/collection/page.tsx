@@ -9,7 +9,7 @@ export default function CollectionPage() {
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
-      <FadeIn className="mx-auto flex min-h-[68vh] max-w-4xl items-center justify-center">
+      <FadeIn className="mx-auto flex min-h-[68vh] max-w-6xl items-center justify-center">
         <div className="w-full text-center">
           <p className="mb-12 text-[10px] uppercase tracking-[0.32em] text-[var(--muted)]">
             collection
@@ -19,13 +19,13 @@ export default function CollectionPage() {
               <Link
                 key={collection.slug}
                 href={`/collection/${collection.slug}`}
-                className="group flex flex-col items-center gap-8"
+                className="flex w-full flex-col items-center gap-10"
               >
                 {collection.coverImage ? (
                   <ArtworkFrame
                     src={collection.coverImage}
                     alt={`${collection.title} collection image`}
-                    className="aspect-[4/3] w-full max-w-xl"
+                    className="aspect-[16/10] w-full max-w-4xl"
                     priority
                   />
                 ) : null}

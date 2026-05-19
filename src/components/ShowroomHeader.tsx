@@ -7,7 +7,7 @@ export function ShowroomHeader() {
       <Link
         href="/"
         aria-label="UKHA home"
-        className="transition hover:opacity-60"
+        className="block"
       >
         <Image
           src="/images/ukha/logo-header.png"
@@ -18,7 +18,7 @@ export function ShowroomHeader() {
           className="h-auto w-16 mix-blend-multiply sm:w-20"
         />
       </Link>
-      <Link href="/menu" className="transition hover:text-[var(--foreground)]">
+      <Link href="/menu">
         menu
       </Link>
     </header>
