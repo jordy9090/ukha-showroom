@@ -10,14 +10,14 @@ export default function OfflineShopPage() {
       <FadeIn className="mx-auto max-w-6xl">
         <section className="grid gap-10 pb-16 pt-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[var(--muted)]">
+            <p className="ukha-caption mb-5">
               offline shop
             </p>
-            <h1 className="font-serif text-5xl tracking-[0.04em] sm:text-7xl">
+            <h1 className="ukha-display">
               showroom
             </h1>
           </div>
-          <div className="max-w-xl text-sm leading-8 text-[var(--muted)] sm:text-base">
+          <div className="ukha-copy max-w-xl">
             <p>Address text will be placed here.</p>
             <p className="mt-5">
               Future opening hours, appointment notes, and studio visit details

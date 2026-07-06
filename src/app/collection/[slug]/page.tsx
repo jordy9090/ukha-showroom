@@ -29,7 +29,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
               handwrittenTitleImage={collection.handwrittenTitleImage}
             />
           </div>
-          <p className="max-w-xl text-sm leading-8 text-[var(--muted)] sm:text-base">
+          <p className="ukha-copy max-w-xl">
             {collection.description}
           </p>
         </section>
@@ -50,7 +50,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
                 }`}
                 priority={index === 0}
               />
-              <h2 className="mt-4 font-serif text-xl tracking-[0.04em]">
+              <h2 className="ukha-caption mt-4">
                 {piece.title}
               </h2>
             </Link>

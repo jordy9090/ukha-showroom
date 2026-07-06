@@ -42,30 +42,30 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <Link
             href={`/collection/${piece.collectionSlug}`}
-            className="text-[10px] uppercase tracking-[0.28em] text-[var(--muted)] transition hover:text-[var(--foreground)]"
+            className="ukha-caption transition hover:text-[var(--foreground)]"
           >
             {collection?.title ?? "collection"}
           </Link>
-          <h1 className="mt-8 font-serif text-4xl tracking-[0.04em] sm:text-6xl">
+          <h1 className="ukha-display mt-8">
             {piece.title}
           </h1>
-          <p className="mt-3 text-sm text-[var(--muted)]">{piece.subtitle}</p>
+          <p className="ukha-caption mt-3">{piece.subtitle}</p>
 
-          <div className="mt-12 space-y-8 border-t border-[var(--line)] pt-8 text-sm leading-7">
+          <div className="ukha-copy mt-12 space-y-8 border-t border-[var(--line)] pt-8">
             <section>
-              <h2 className="mb-2 text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+              <h2 className="ukha-caption mb-2">
                 work description
               </h2>
               <p>{piece.description}</p>
             </section>
             <section>
-              <h2 className="mb-2 text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+              <h2 className="ukha-caption mb-2">
                 material
               </h2>
               <p>{piece.material}</p>
             </section>
             <section>
-              <h2 className="mb-2 text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+              <h2 className="ukha-caption mb-2">
                 price
               </h2>
               <p>{piece.price}</p>
@@ -74,7 +74,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
 
           <a
             href="mailto:hello@ukha.kr?subject=UKHA%20piece%20inquiry"
-            className="mt-12 inline-flex border-b border-[var(--foreground)] pb-1 text-[11px] uppercase tracking-[0.28em] transition hover:text-[var(--muted)]"
+            className="ukha-caption mt-12 inline-flex border-b border-[var(--foreground)] pb-1 transition hover:text-[var(--muted)]"
           >
             inquiry
           </a>

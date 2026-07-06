@@ -11,7 +11,7 @@ export default function CollectionPage() {
       <ShowroomHeader />
       <FadeIn className="mx-auto flex min-h-[68vh] max-w-6xl items-center justify-center">
         <div className="w-full text-center">
-          <p className="mb-12 text-[10px] uppercase tracking-[0.32em] text-[var(--muted)]">
+          <p className="ukha-caption mb-12">
             collection
           </p>
           <div className="flex flex-col items-center gap-14">

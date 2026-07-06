@@ -9,10 +9,10 @@ export default function ArchiveNotePage() {
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-6xl">
         <section className="pb-16 pt-10">
-          <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[var(--muted)]">
+          <p className="ukha-caption mb-5">
             archive note
           </p>
-          <h1 className="max-w-3xl font-serif text-5xl leading-tight tracking-[0.04em] sm:text-7xl">
+          <h1 className="ukha-display max-w-4xl">
             sketches, process, and records
           </h1>
         </section>
@@ -29,7 +29,7 @@ export default function ArchiveNotePage() {
                 }
                 priority={index === 0}
               />
-              <p className="mt-3 text-xs lowercase tracking-[0.06em] text-[var(--muted)]">
+              <p className="ukha-caption mt-3">
                 {note.category} / {note.title}
               </p>
             </div>

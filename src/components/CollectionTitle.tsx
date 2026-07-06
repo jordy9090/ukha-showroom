@@ -21,7 +21,7 @@ export function CollectionTitle({
   }
 
   return (
-    <h1 className="font-serif text-5xl lowercase tracking-[0.08em] sm:text-7xl">
+    <h1 className="ukha-display">
       {title}
     </h1>
   );
