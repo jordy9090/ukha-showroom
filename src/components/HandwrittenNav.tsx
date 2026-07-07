@@ -3,6 +3,7 @@ import Link from "next/link";
 
 type HandwrittenNavProps = {
   className?: string;
+  includeMenu?: boolean;
 };
 
 const navItems = [
@@ -37,16 +38,24 @@ const navItems = [
     width: 1464,
     height: 180,
     className: "w-[min(36vw,260px)]",
+    isMenu: true,
   },
 ];
 
-export function HandwrittenNav({ className = "" }: HandwrittenNavProps) {
+export function HandwrittenNav({
+  className = "",
+  includeMenu = false,
+}: HandwrittenNavProps) {
+  const visibleItems = includeMenu
+    ? navItems
+    : navItems.filter((item) => !item.isMenu);
+
   return (
     <nav
       aria-label="UKHA showroom navigation"
       className={`flex flex-col items-center gap-5 sm:gap-6 ${className}`}
     >
-      {navItems.map((item) => (
+      {visibleItems.map((item) => (
         <Link
           key={item.href}
           href={item.href}

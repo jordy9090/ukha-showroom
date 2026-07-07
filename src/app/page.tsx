@@ -8,24 +8,8 @@ import { HandwrittenNav } from "@/components/HandwrittenNav";
 export default function Home() {
   return (
     <main className="ukha-page relative min-h-screen overflow-x-hidden px-5 text-[var(--foreground)] sm:px-8">
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 0.14, y: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
-        className="pointer-events-none absolute bottom-[3vh] left-1/2 h-[42vh] w-[min(84vw,780px)] -translate-x-1/2 mix-blend-multiply"
-      >
-        <Image
-          src="/images/ukha/liminal-cover.png"
-          alt=""
-          fill
-          sizes="(max-width: 929px) 84vw, 780px"
-          className="object-contain object-bottom"
-        />
-      </motion.div>
-
-      <section className="relative z-10 flex min-h-[112svh] flex-col items-center justify-center py-20">
-        <div className="flex -translate-y-[4vh] flex-col items-center">
+      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center py-20">
+        <div className="flex -translate-y-[2vh] flex-col items-center">
           <Link
             href="/menu"
             aria-label="Open UKHA menu"
@@ -50,16 +34,36 @@ export default function Home() {
               />
             </motion.div>
           </Link>
+        </div>
+      </section>
 
+      <section className="relative flex min-h-screen flex-col items-center justify-center py-24">
+        <motion.div
+          aria-hidden="true"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 0.13, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="pointer-events-none absolute bottom-[8vh] left-1/2 h-[44vh] w-[min(86vw,820px)] -translate-x-1/2 mix-blend-multiply"
+        >
+          <Image
+            src="/images/ukha/liminal-cover.png"
+            alt=""
+            fill
+            sizes="(max-width: 953px) 86vw, 820px"
+            className="object-contain object-bottom"
+          />
+        </motion.div>
+
+        <div className="relative z-10 flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.55 }}
             transition={{
               duration: 0.8,
               ease: [0.22, 1, 0.36, 1],
-              delay: 0.22,
             }}
-            className="relative z-20 mt-12 sm:mt-14"
           >
             <HandwrittenNav />
           </motion.div>

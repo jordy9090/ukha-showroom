@@ -19,8 +19,19 @@ export function ShowroomHeader() {
           className="h-auto w-28 sm:w-36"
         />
       </Link>
-      <Link href="/menu">
-        menu
+      <Link
+        href="/menu"
+        aria-label="menu"
+        className="group block outline-none"
+      >
+        <Image
+          src="/images/ukha/nav-menu.png"
+          alt=""
+          width={1464}
+          height={180}
+          sizes="(max-width: 639px) 5rem, 6rem"
+          className="h-auto w-20 opacity-[0.78] mix-blend-multiply transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 sm:w-24"
+        />
       </Link>
     </header>
   );
