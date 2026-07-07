@@ -26,6 +26,8 @@ export default function CollectionPage() {
                     src={collection.coverImage}
                     alt={`${collection.title} collection image`}
                     className="aspect-[16/10] w-full max-w-4xl"
+                    fit="contain"
+                    sizes="(min-width: 1024px) 896px, 92vw"
                     priority
                   />
                 ) : null}

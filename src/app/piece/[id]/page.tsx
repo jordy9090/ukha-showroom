@@ -34,6 +34,8 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
               alt={`${piece.title} image ${index + 1}`}
               label={`${piece.title} detail image ${index + 1} placeholder`}
               className={index === 0 ? "aspect-[4/5]" : "aspect-[5/4]"}
+              fit="contain"
+              sizes="(min-width: 1024px) 660px, 92vw"
               priority={index === 0}
             />
           ))}

@@ -32,6 +32,9 @@ export type Collection = {
   pieces: Piece[];
 };
 
+// To add or replace showroom/product photos for now, place the file in
+// public/images/ukha and update the filenames in this data file.
+// A future admin upload flow can sit on top of this without changing the pages.
 const ukhaImage = (filename: string) => {
   const assetPath = path.join(process.cwd(), "public", "images", "ukha", filename);
 

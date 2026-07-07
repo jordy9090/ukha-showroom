@@ -34,7 +34,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
           </p>
         </section>
 
-        <section className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="mx-auto flex max-w-4xl flex-col gap-20 sm:gap-24">
           {collection.pieces.map((piece, index) => (
             <Link
               key={piece.id}
@@ -45,14 +45,17 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
                 src={piece.images[0]}
                 alt={piece.title}
                 label={`${piece.title} image placeholder`}
-                className={`aspect-[4/5] ${
-                  index % 3 === 1 ? "sm:mt-16" : ""
-                }`}
+                className="aspect-[4/5] w-full"
+                fit="contain"
+                sizes="(min-width: 1024px) 896px, 92vw"
                 priority={index === 0}
               />
-              <h2 className="ukha-caption mt-4">
-                {piece.title}
-              </h2>
+              <div className="mt-5 flex items-center justify-between gap-6">
+                <h2 className="ukha-caption">
+                  {piece.title}
+                </h2>
+                <span className="ukha-caption opacity-50">view</span>
+              </div>
             </Link>
           ))}
         </section>

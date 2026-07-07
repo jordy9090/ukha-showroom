@@ -11,10 +11,10 @@ export default function OfflineShopPage() {
         <section className="grid gap-10 pb-16 pt-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="ukha-caption mb-5">
-              offline shop
+              visit
             </p>
             <h1 className="ukha-display">
-              showroom
+              showroom visit
             </h1>
           </div>
           <div className="ukha-copy max-w-xl">
@@ -36,6 +36,7 @@ export default function OfflineShopPage() {
               className={`${
                 image.aspect === "portrait" ? "aspect-[4/5]" : "aspect-[5/4]"
               } ${index === 1 ? "sm:mt-12" : ""}`}
+              fit="contain"
               priority={index === 0}
             />
           ))}

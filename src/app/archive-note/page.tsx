@@ -8,13 +8,10 @@ export default function ArchiveNotePage() {
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-6xl">
-        <section className="pb-16 pt-10">
-          <p className="ukha-caption mb-5">
+        <section className="pb-12 pt-10">
+          <p className="ukha-caption">
             archive note
           </p>
-          <h1 className="ukha-display max-w-4xl">
-            sketches, process, and records
-          </h1>
         </section>
 
         <section className="columns-1 gap-5 sm:columns-2 lg:columns-3">
@@ -27,6 +24,7 @@ export default function ArchiveNotePage() {
                 className={
                   note.aspect === "portrait" ? "aspect-[4/5]" : "aspect-[5/4]"
                 }
+                fit="contain"
                 priority={index === 0}
               />
               <p className="ukha-caption mt-3">
