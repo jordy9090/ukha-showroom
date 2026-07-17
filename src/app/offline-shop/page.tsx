@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { offlineShopImages } from "@/data/collections";
+import { offlineShopImages, visitCopy } from "@/data/collections";
 
 export default function OfflineShopPage() {
   return (
@@ -10,19 +11,20 @@ export default function OfflineShopPage() {
       <FadeIn className="mx-auto max-w-6xl">
         <section className="grid gap-10 pb-16 pt-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="ukha-caption mb-5">
-              visit
-            </p>
-            <h1 className="ukha-display">
-              showroom visit
-            </h1>
+            <Image
+              src="/images/ukha/nav-visit.png"
+              alt="visit"
+              width={1347}
+              height={285}
+              sizes="(max-width: 640px) 34vw, 220px"
+              className="h-auto w-[min(34vw,220px)] opacity-[0.76] mix-blend-multiply"
+              priority
+            />
           </div>
-          <div className="ukha-copy max-w-xl">
-            <p>Address text will be placed here.</p>
-            <p className="mt-5">
-              Future opening hours, appointment notes, and studio visit details
-              can live in this quiet text area.
-            </p>
+          <div className="ukha-note max-w-md space-y-5">
+            {visitCopy.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
           </div>
         </section>
 

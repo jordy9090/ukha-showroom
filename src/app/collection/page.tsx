@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { CollectionTitle } from "@/components/CollectionTitle";
@@ -11,9 +12,15 @@ export default function CollectionPage() {
       <ShowroomHeader />
       <FadeIn className="mx-auto flex min-h-[68vh] max-w-6xl items-center justify-center">
         <div className="w-full text-center">
-          <p className="ukha-caption mb-12">
-            collection
-          </p>
+          <Image
+            src="/images/ukha/nav-collection.png"
+            alt="collection"
+            width={1492}
+            height={179}
+            sizes="(max-width: 640px) 46vw, 300px"
+            className="mx-auto mb-12 h-auto w-[min(46vw,300px)] opacity-[0.76] mix-blend-multiply"
+            priority
+          />
           <div className="flex flex-col items-center gap-14">
             {collections.map((collection) => (
               <Link

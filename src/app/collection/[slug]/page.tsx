@@ -29,7 +29,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
               handwrittenTitleImage={collection.handwrittenTitleImage}
             />
           </div>
-          <p className="ukha-copy max-w-xl">
+          <p className="ukha-note max-w-xl">
             {collection.description}
           </p>
         </section>

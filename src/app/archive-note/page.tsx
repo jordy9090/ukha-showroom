@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
@@ -9,9 +10,15 @@ export default function ArchiveNotePage() {
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-6xl">
         <section className="pb-12 pt-10">
-          <p className="ukha-caption">
-            archive note
-          </p>
+          <Image
+            src="/images/ukha/nav-archive.png"
+            alt="archive"
+            width={1470}
+            height={201}
+            sizes="(max-width: 640px) 42vw, 260px"
+            className="h-auto w-[min(42vw,260px)] opacity-[0.72] mix-blend-multiply"
+            priority
+          />
         </section>
 
         <section className="columns-1 gap-5 sm:columns-2 lg:columns-3">
@@ -27,9 +34,6 @@ export default function ArchiveNotePage() {
                 fit="contain"
                 priority={index === 0}
               />
-              <p className="ukha-caption mt-3">
-                {note.category} / {note.title}
-              </p>
             </div>
           ))}
         </section>

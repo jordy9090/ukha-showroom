@@ -119,6 +119,12 @@ export const archiveNotes: ArchiveNote[] = [
   },
 ];
 
+// Edit these lines to update the small visit-page description.
+export const visitCopy = [
+  "Address text will be placed here.",
+  "Future opening hours, appointment notes, and studio visit details can live here.",
+];
+
 // Replace src values with future showroom/studio photos.
 export const offlineShopImages: ShowroomImage[] = [
   {
