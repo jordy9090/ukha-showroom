@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArtworkFrame } from "@/components/ArtworkFrame";
-import { CollectionTitle } from "@/components/CollectionTitle";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { collections } from "@/data/collections";
@@ -37,11 +36,7 @@ export default function CollectionPage() {
                     sizes="(min-width: 1024px) 896px, 92vw"
                     priority
                   />
-                ) : null}
-                <CollectionTitle
-                  title={collection.title}
-                  handwrittenTitleImage={collection.handwrittenTitleImage}
-                />
+                ) : null
               </Link>
             ))}
           </div>
