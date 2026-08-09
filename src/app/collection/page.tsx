@@ -5,6 +5,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { collections } from "@/data/collections";
 
+// Collection names are intentionally omitted from the listing.
 export default function CollectionPage() {
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
@@ -36,7 +37,7 @@ export default function CollectionPage() {
                     sizes="(min-width: 1024px) 896px, 92vw"
                     priority
                   />
-                ) : null
+                ) : null}
               </Link>
             ))}
           </div>
