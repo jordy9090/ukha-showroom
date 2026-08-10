@@ -16,6 +16,18 @@ const archivePlacements = [
   "right-[2%] top-[61%] z-20 h-[38%] w-[37%] opacity-[0.72]",
 ];
 
+const archiveOpacities = [
+  "opacity-[0.65]",
+  "opacity-90",
+  "opacity-75",
+  "opacity-90",
+  "opacity-[0.65]",
+  "opacity-70",
+  "opacity-80",
+  "opacity-90",
+  "opacity-[0.72]",
+];
+
 export default function ArchiveNotePage() {
   const visibleArchiveNotes = archiveNotes.filter((note) => note.src).reverse();
   const archivePages = Array.from(
@@ -47,7 +59,7 @@ export default function ArchiveNotePage() {
           {visibleArchiveNotes.map((note, index) => (
             <div
               key={note.id}
-              className={`relative shrink-0 snap-center ${note.aspect === "portrait" ? "w-[21.6svh]" : "w-[36svh]"}`}
+              className={`relative shrink-0 snap-center ${archiveOpacities[index % archiveOpacities.length]} ${note.aspect === "portrait" ? "w-[21.6svh]" : "w-[36svh]"}`}
             >
               <ArtworkFrame
                 src={note.src}
