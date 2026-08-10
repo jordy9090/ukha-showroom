@@ -19,6 +19,10 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
   }
 
   const images = piece.images.length > 0 ? piece.images : [undefined, undefined];
+  const displayedPrice =
+    piece.price && piece.price.toLowerCase() !== "price on inquiry"
+      ? piece.price
+      : "ON REQUEST";
 
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
@@ -44,7 +48,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
               <p className="ukha-note">{piece.material || "—"}</p>
             </section>
             <section>
-              <p className="ukha-note">PRICE: {piece.price || "—"}</p>
+              <p className="ukha-note">PRICE: {displayedPrice}</p>
             </section>
           </div>
 
