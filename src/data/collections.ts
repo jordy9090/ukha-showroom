@@ -87,7 +87,7 @@ export const collections: Collection[] = [
   },
   {
     slug: "collection-02",
-    title: "collection 02",
+    title: "PANOPTICON",
     handwrittenTitleImage: "",
     coverImage: ukhaImage("collection-02-cover.png"),
     description: "",
@@ -95,7 +95,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-07",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 07",
+        title: "PANOPTICON: 01",
         subtitle: "",
         description: "",
         material: "",
@@ -108,7 +108,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-06",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 06",
+        title: "PANOPTICON: 02",
         subtitle: "",
         description: "",
         material: "",
@@ -123,7 +123,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-05",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 05",
+        title: "PANOPTICON: 03",
         subtitle: "",
         description: "",
         material: "",
@@ -138,7 +138,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-01",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 01",
+        title: "PANOPTICON: 04",
         subtitle: "",
         description: "",
         material: "",
@@ -152,7 +152,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-02",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 02",
+        title: "PANOPTICON: 05",
         subtitle: "",
         description: "",
         material: "",
@@ -167,7 +167,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-03",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 03",
+        title: "PANOPTICON: 06",
         subtitle: "",
         description: "",
         material: "",
@@ -180,7 +180,7 @@ export const collections: Collection[] = [
       {
         id: "collection-02-piece-04",
         collectionSlug: "collection-02",
-        title: "Collection 02 Piece 04",
+        title: "PANOPTICON: 07",
         subtitle: "",
         description: "",
         material: "",

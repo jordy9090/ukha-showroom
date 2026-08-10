@@ -20,6 +20,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
   }
 
   const collection = getCollection(piece.collectionSlug);
+  const isPanopticon = piece.collectionSlug === "collection-02";
   const images = piece.images.length > 0 ? piece.images : [undefined, undefined];
   const hasDetails = Boolean(
     piece.subtitle || piece.description || piece.material || piece.price,
@@ -41,6 +42,10 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
           landscape={piece.collectionSlug === "collection-02"}
           unframed={piece.collectionSlug === "collection-02"}
         />
+
+        {isPanopticon ? (
+          <h1 className="ukha-piece-title mt-6 text-center">{piece.title}</h1>
+        ) : null}
 
         {hasDetails ? <aside className="lg:sticky lg:top-28 lg:self-start">
           <Link
