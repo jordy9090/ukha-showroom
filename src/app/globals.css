@@ -108,12 +108,16 @@ button {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.68'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   mix-blend-mode: soft-light;
-  opacity: 0.28;
+  opacity: 0.42;
+}
+
+.archive-grain img {
+  filter: sepia(0.09) saturate(0.93) contrast(1.035);
 }
 
 @media (max-width: 639px) {
   .archive-grain img {
-    filter: sepia(0.12) saturate(0.94) contrast(1.025);
+    filter: sepia(0.14) saturate(0.92) contrast(1.04);
     object-fit: contain;
     transform: scale(0.84);
   }
@@ -122,7 +126,7 @@ button {
     inset: 8%;
     background-size: 145px 145px;
     mix-blend-mode: overlay;
-    opacity: 0.38;
+    opacity: 0.48;
   }
 }
 

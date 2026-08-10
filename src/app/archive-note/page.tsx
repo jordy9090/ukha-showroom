@@ -4,25 +4,45 @@ import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { archiveNotes } from "@/data/collections";
 
+const mobileWidths = [
+  "w-[68vw]",
+  "w-[48vw]",
+  "w-[58vw]",
+  "w-[52vw]",
+  "w-[64vw]",
+  "w-[72vw]",
+  "w-[56vw]",
+  "w-[50vw]",
+  "w-[70vw]",
+];
+
 const archivePlacements = [
-  "w-[68vw] opacity-90 sm:left-[4%] sm:top-[14%] sm:z-10 sm:h-[225px] sm:w-[25%]",
-  "w-[48vw] opacity-100 sm:left-[31%] sm:top-[1%] sm:z-30 sm:h-[185px] sm:w-[14%]",
-  "w-[58vw] opacity-80 sm:right-[6%] sm:top-[5%] sm:z-20 sm:h-[175px] sm:w-[20%]",
-  "w-[52vw] opacity-100 sm:left-[12%] sm:top-[35%] sm:z-30 sm:h-[300px] sm:w-[22%]",
-  "w-[64vw] opacity-75 sm:left-[2%] sm:top-[65%] sm:z-10 sm:h-[285px] sm:w-[28%]",
-  "w-[72vw] opacity-[0.85] sm:left-[30%] sm:top-[24%] sm:z-10 sm:h-[330px] sm:w-[42%]",
-  "w-[56vw] opacity-90 sm:right-[3%] sm:top-[28%] sm:z-20 sm:h-[250px] sm:w-[30%]",
-  "w-[50vw] opacity-100 sm:left-[35%] sm:top-[61%] sm:z-30 sm:h-[225px] sm:w-[24%]",
-  "w-[70vw] opacity-80 sm:right-[2%] sm:top-[60%] sm:z-20 sm:h-[330px] sm:w-[37%]",
+  "left-[4%] top-[14%] z-10 h-[30%] w-[25%] opacity-[0.65]",
+  "left-[31%] top-[1%] z-30 h-[25%] w-[14%] opacity-90",
+  "right-[6%] top-[5%] z-20 h-[24%] w-[20%] opacity-75",
+  "left-[12%] top-[36%] z-30 h-[41%] w-[22%] opacity-90",
+  "left-[2%] top-[66%] z-10 h-[32%] w-[28%] opacity-[0.65]",
+  "left-[30%] top-[24%] z-10 h-[45%] w-[42%] opacity-70",
+  "right-[3%] top-[29%] z-20 h-[34%] w-[30%] opacity-80",
+  "left-[35%] top-[64%] z-30 h-[30%] w-[24%] opacity-90",
+  "right-[2%] top-[61%] z-20 h-[38%] w-[37%] opacity-[0.72]",
 ];
 
 export default function ArchiveNotePage() {
-  const visibleArchiveNotes = archiveNotes.filter((note) => note.src);
+  const visibleArchiveNotes = archiveNotes.filter((note) => note.src).reverse();
+  const archivePages = Array.from(
+    { length: Math.ceil(visibleArchiveNotes.length / archivePlacements.length) },
+    (_, pageIndex) =>
+      visibleArchiveNotes.slice(
+        pageIndex * archivePlacements.length,
+        (pageIndex + 1) * archivePlacements.length,
+      ),
+  );
 
   return (
-    <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
+    <main className="ukha-page min-h-screen px-6 py-28 sm:px-10 sm:py-0">
       <ShowroomHeader />
-      <FadeIn className="mx-auto max-w-7xl">
+      <FadeIn className="mx-auto max-w-7xl sm:max-w-none">
         <section className="pb-8 pt-10 sm:absolute sm:left-10 sm:top-24 sm:z-40 sm:p-0">
           <Image
             src="/images/ukha/nav-archive.png"
@@ -35,22 +55,49 @@ export default function ArchiveNotePage() {
           />
         </section>
 
-        <section className="ukha-horizontal-gallery -mx-6 flex h-[34svh] snap-x snap-mandatory scroll-px-[16vw] items-center gap-5 overflow-x-auto px-[16vw] pb-6 sm:relative sm:mx-0 sm:block sm:h-[1040px] sm:overflow-visible sm:px-0 sm:pb-0 lg:h-[1120px]">
+        <section className="ukha-horizontal-gallery -mx-6 flex h-[34svh] snap-x snap-mandatory scroll-px-[16vw] items-center gap-5 overflow-x-auto px-[16vw] pb-6 sm:hidden">
           {visibleArchiveNotes.map((note, index) => (
             <div
               key={note.id}
-              className={`relative shrink-0 snap-center sm:absolute ${archivePlacements[index % archivePlacements.length]}`}
+              className={`relative shrink-0 snap-center ${mobileWidths[index % mobileWidths.length]}`}
             >
               <ArtworkFrame
                 src={note.src}
                 alt={note.title}
                 label={`${note.title} placeholder`}
-                className="archive-grain h-[27svh] sm:h-full sm:aspect-auto"
+                className="archive-grain h-[27svh]"
                 fit="cover"
                 framed={false}
                 priority={index === 0}
                 sizes="(min-width: 1024px) 40vw, (min-width: 640px) 48vw, 92vw"
               />
+            </div>
+          ))}
+        </section>
+
+        <section className="ukha-horizontal-gallery -mx-10 hidden h-svh snap-x snap-mandatory overflow-x-auto px-10 sm:flex">
+          {archivePages.map((page, pageIndex) => (
+            <div
+              key={`archive-page-${pageIndex}`}
+              className="relative h-full w-[calc(100vw-5rem)] shrink-0 snap-start"
+            >
+              {page.map((note, index) => (
+                <div
+                  key={note.id}
+                  className={`absolute ${archivePlacements[index]}`}
+                >
+                  <ArtworkFrame
+                    src={note.src}
+                    alt={note.title}
+                    label={`${note.title} placeholder`}
+                    className="archive-grain h-full"
+                    fit="cover"
+                    framed={false}
+                    priority={pageIndex === 0 && index === 0}
+                    sizes="(min-width: 1024px) 42vw, 48vw"
+                  />
+                </div>
+              ))}
             </div>
           ))}
         </section>
