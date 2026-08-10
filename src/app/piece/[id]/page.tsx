@@ -40,7 +40,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
             {piece.title}
           </h1>
 
-          <div className="mt-10 space-y-7 border-t border-[var(--line)] pt-7">
+          <div className="mt-10 space-y-7 border-t border-[var(--line)] pt-7 lowercase">
             <section>
               <p className="ukha-note">{piece.description || "—"}</p>
             </section>
@@ -48,7 +48,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
               <p className="ukha-note">{piece.material || "—"}</p>
             </section>
             <section>
-              <p className="ukha-note">PRICE: {displayedPrice}</p>
+              <p className="ukha-note">price: {displayedPrice}</p>
             </section>
           </div>
 
