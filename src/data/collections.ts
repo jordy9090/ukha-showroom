@@ -254,6 +254,13 @@ export const archiveNotes: ArchiveNote[] = [
     src: ukhaImage("archive-note-9778.jpg"),
     aspect: "landscape",
   },
+  {
+    id: "archive-note-kakao-20260507",
+    title: "archive note kakao 20260507",
+    category: "process",
+    src: ukhaImage("archive-note-kakao-20260507.jpg"),
+    aspect: "landscape",
+  },
 ];
 
 // Edit these lines to update the small visit-page description.
