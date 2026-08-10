@@ -4,6 +4,11 @@ import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery"
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { collections, getPiece } from "@/data/collections";
 
+function sentenceCase(value: string) {
+  const lowercaseValue = value.toLowerCase();
+  return lowercaseValue.charAt(0).toUpperCase() + lowercaseValue.slice(1);
+}
+
 export function generateStaticParams() {
   return collections.flatMap((collection) =>
     collection.pieces.map((piece) => ({ id: piece.id })),
@@ -19,10 +24,16 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
   }
 
   const images = piece.images.length > 0 ? piece.images : [undefined, undefined];
+  const displayedDescription = piece.description
+    ? sentenceCase(piece.description)
+    : "—";
+  const displayedMaterial = piece.material
+    ? sentenceCase(piece.material)
+    : "—";
   const displayedPrice =
     piece.price && piece.price.toLowerCase() !== "price on inquiry"
-      ? piece.price
-      : "ON REQUEST";
+      ? piece.price.toLowerCase()
+      : "on request";
 
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
@@ -40,15 +51,15 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
             {piece.title}
           </h1>
 
-          <div className="mt-10 space-y-7 border-t border-[var(--line)] pt-7 lowercase">
+          <div className="mt-10 space-y-7 border-t border-[var(--line)] pt-7">
             <section>
-              <p className="ukha-note">{piece.description || "—"}</p>
+              <p className="ukha-note">{displayedDescription}</p>
             </section>
             <section>
-              <p className="ukha-note">{piece.material || "—"}</p>
+              <p className="ukha-note">{displayedMaterial}</p>
             </section>
             <section>
-              <p className="ukha-note">price: {displayedPrice}</p>
+              <p className="ukha-note">Price: {displayedPrice}</p>
             </section>
           </div>
 
