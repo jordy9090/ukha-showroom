@@ -4,18 +4,6 @@ import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { archiveNotes } from "@/data/collections";
 
-const mobileWidths = [
-  "w-[68vw]",
-  "w-[48vw]",
-  "w-[58vw]",
-  "w-[52vw]",
-  "w-[64vw]",
-  "w-[72vw]",
-  "w-[56vw]",
-  "w-[50vw]",
-  "w-[70vw]",
-];
-
 const archivePlacements = [
   "left-[4%] top-[14%] z-10 h-[30%] w-[25%] opacity-[0.65]",
   "left-[31%] top-[1%] z-30 h-[25%] w-[14%] opacity-90",
@@ -43,7 +31,7 @@ export default function ArchiveNotePage() {
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10 sm:py-0">
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-7xl sm:max-w-none">
-        <section className="pb-8 pt-10 sm:absolute sm:left-10 sm:top-24 sm:z-40 sm:p-0">
+        <section className="relative z-20 pb-8 pt-10 sm:absolute sm:left-10 sm:top-24 sm:z-40 sm:p-0">
           <Image
             src="/images/ukha/nav-archive.png"
             alt="archive"
@@ -55,11 +43,11 @@ export default function ArchiveNotePage() {
           />
         </section>
 
-        <section className="ukha-horizontal-gallery -mx-6 flex h-[34svh] snap-x snap-mandatory scroll-px-[16vw] items-center gap-5 overflow-x-auto px-[16vw] pb-6 sm:hidden">
+        <section className="ukha-horizontal-gallery absolute inset-x-0 top-0 flex h-svh snap-x snap-mandatory scroll-px-[16vw] items-center gap-5 overflow-x-auto px-[16vw] sm:hidden">
           {visibleArchiveNotes.map((note, index) => (
             <div
               key={note.id}
-              className={`relative shrink-0 snap-center ${mobileWidths[index % mobileWidths.length]}`}
+              className={`relative shrink-0 snap-center ${note.aspect === "portrait" ? "w-[21.6svh]" : "w-[36svh]"}`}
             >
               <ArtworkFrame
                 src={note.src}
