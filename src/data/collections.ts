@@ -93,6 +93,21 @@ export const collections: Collection[] = [
     description: "",
     pieces: [
       {
+        id: "collection-02-piece-06",
+        collectionSlug: "collection-02",
+        title: "Collection 02 Piece 06",
+        subtitle: "",
+        description: "",
+        material: "",
+        price: "",
+        images: [
+          ukhaImage("collection-02-piece-06-cover.jpg"),
+          ukhaImage("collection-02-piece-06-detail-01.jpg"),
+          ukhaImage("collection-02-piece-06-detail-02.jpg"),
+          ukhaImage("collection-02-piece-06-detail-03.jpg"),
+        ].filter(Boolean),
+      },
+      {
         id: "collection-02-piece-05",
         collectionSlug: "collection-02",
         title: "Collection 02 Piece 05",
