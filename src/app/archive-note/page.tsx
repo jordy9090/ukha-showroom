@@ -66,7 +66,7 @@ export default function ArchiveNotePage() {
                 alt={note.title}
                 label={`${note.title} placeholder`}
                 className="archive-grain h-[27svh]"
-                fit="cover"
+                fit="contain"
                 framed={false}
                 priority={index === 0}
                 sizes="(min-width: 1024px) 40vw, (min-width: 640px) 48vw, 92vw"
@@ -91,7 +91,7 @@ export default function ArchiveNotePage() {
                     alt={note.title}
                     label={`${note.title} placeholder`}
                     className="archive-grain h-full"
-                    fit="cover"
+                    fit="contain"
                     framed={false}
                     priority={pageIndex === 0 && index === 0}
                     sizes="(min-width: 1024px) 42vw, 48vw"
