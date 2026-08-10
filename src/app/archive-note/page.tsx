@@ -5,15 +5,15 @@ import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { archiveNotes } from "@/data/collections";
 
 const archivePlacements = [
-  "col-span-2 w-[84%] justify-self-start sm:left-[4%] sm:top-[14%] sm:z-10 sm:h-[225px] sm:w-[25%]",
-  "col-span-1 w-full sm:left-[31%] sm:top-[1%] sm:z-30 sm:h-[185px] sm:w-[14%]",
-  "col-span-1 w-full sm:right-[6%] sm:top-[5%] sm:z-20 sm:h-[175px] sm:w-[20%]",
-  "col-span-1 w-full sm:left-[12%] sm:top-[35%] sm:z-30 sm:h-[300px] sm:w-[22%]",
-  "col-span-1 w-full sm:left-[30%] sm:top-[24%] sm:z-10 sm:h-[330px] sm:w-[42%]",
-  "col-span-2 w-[84%] justify-self-end sm:right-[3%] sm:top-[28%] sm:z-20 sm:h-[250px] sm:w-[30%]",
-  "col-span-2 w-[78%] justify-self-start sm:left-[2%] sm:top-[65%] sm:z-10 sm:h-[285px] sm:w-[28%]",
-  "col-span-1 w-full sm:left-[35%] sm:top-[61%] sm:z-30 sm:h-[225px] sm:w-[24%]",
-  "col-span-1 w-full sm:right-[2%] sm:top-[60%] sm:z-20 sm:h-[330px] sm:w-[37%]",
+  "col-span-2 w-[84%] justify-self-start opacity-90 sm:left-[4%] sm:top-[14%] sm:z-10 sm:h-[225px] sm:w-[25%]",
+  "col-span-1 w-full opacity-100 sm:left-[31%] sm:top-[1%] sm:z-30 sm:h-[185px] sm:w-[14%]",
+  "col-span-1 w-full opacity-80 sm:right-[6%] sm:top-[5%] sm:z-20 sm:h-[175px] sm:w-[20%]",
+  "col-span-1 w-full opacity-100 sm:left-[12%] sm:top-[35%] sm:z-30 sm:h-[300px] sm:w-[22%]",
+  "col-span-1 w-full opacity-75 sm:left-[30%] sm:top-[24%] sm:z-10 sm:h-[330px] sm:w-[42%]",
+  "col-span-2 w-[84%] justify-self-end opacity-[0.85] sm:right-[3%] sm:top-[28%] sm:z-20 sm:h-[250px] sm:w-[30%]",
+  "col-span-2 w-[78%] justify-self-start opacity-90 sm:left-[2%] sm:top-[65%] sm:z-10 sm:h-[285px] sm:w-[28%]",
+  "col-span-1 w-full opacity-100 sm:left-[35%] sm:top-[61%] sm:z-30 sm:h-[225px] sm:w-[24%]",
+  "col-span-1 w-full opacity-80 sm:right-[2%] sm:top-[60%] sm:z-20 sm:h-[330px] sm:w-[37%]",
 ];
 
 export default function ArchiveNotePage() {
