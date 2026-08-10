@@ -6,19 +6,6 @@ import { HandwrittenNav } from "@/components/HandwrittenNav";
 export default function MenuPage() {
   return (
     <main className="ukha-page relative min-h-screen overflow-x-hidden px-5 text-[var(--foreground)] sm:px-8">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-2vh] left-1/2 h-[44vh] w-[min(86vw,820px)] -translate-x-1/2 opacity-[0.13] mix-blend-multiply"
-      >
-        <Image
-          src="/images/ukha/liminal-cover.png"
-          alt=""
-          fill
-          sizes="(max-width: 953px) 86vw, 820px"
-          className="object-contain object-bottom"
-        />
-      </div>
-
       <Link
         href="/"
         aria-label="UKHA home"

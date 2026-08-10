@@ -5,6 +5,10 @@ import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { offlineShopImages, visitCopy } from "@/data/collections";
 
 export default function OfflineShopPage() {
+  const visibleOfflineShopImages = offlineShopImages.filter(
+    (image) => image.src,
+  );
+
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
@@ -21,7 +25,7 @@ export default function OfflineShopPage() {
               priority
             />
           </div>
-          <div className="ukha-note max-w-md space-y-5">
+          <div className="ukha-note max-w-md">
             {visitCopy.map((line) => (
               <p key={line}>{line}</p>
             ))}
@@ -29,7 +33,7 @@ export default function OfflineShopPage() {
         </section>
 
         <section className="grid gap-5 sm:grid-cols-2">
-          {offlineShopImages.map((image, index) => (
+          {visibleOfflineShopImages.map((image, index) => (
             <ArtworkFrame
               key={image.id}
               src={image.src}
@@ -42,6 +46,32 @@ export default function OfflineShopPage() {
               priority={index === 0}
             />
           ))}
+        </section>
+
+        <section className="ukha-note ukha-contact mt-16 flex flex-col items-end pb-4 text-right">
+          <a href="mailto:ukhastudio@gmail.com">ukhastudio@gmail.com</a>
+          <a
+            href="https://www.instagram.com/ukha_studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1"
+          >
+            @ukha_studio
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="size-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M14 5h5v5" />
+              <path d="m10 14 9-9" />
+              <path d="M19 14v5H5V5h5" />
+            </svg>
+          </a>
         </section>
       </FadeIn>
     </main>

@@ -5,6 +5,8 @@ import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { archiveNotes } from "@/data/collections";
 
 export default function ArchiveNotePage() {
+  const visibleArchiveNotes = archiveNotes.filter((note) => note.src);
+
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
@@ -22,7 +24,7 @@ export default function ArchiveNotePage() {
         </section>
 
         <section className="columns-1 gap-5 sm:columns-2 lg:columns-3">
-          {archiveNotes.map((note, index) => (
+          {visibleArchiveNotes.map((note, index) => (
             <div key={note.id} className="mb-5 break-inside-avoid">
               <ArtworkFrame
                 src={note.src}

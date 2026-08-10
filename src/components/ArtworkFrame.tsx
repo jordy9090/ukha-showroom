@@ -8,6 +8,7 @@ type ArtworkFrameProps = {
   priority?: boolean;
   fit?: "cover" | "contain";
   sizes?: string;
+  framed?: boolean;
 };
 
 export function ArtworkFrame({
@@ -18,12 +19,16 @@ export function ArtworkFrame({
   priority = false,
   fit = "cover",
   sizes = "(min-width: 1024px) 40vw, 92vw",
+  framed = true,
 }: ArtworkFrameProps) {
   const imageFit = fit === "contain" ? "object-contain" : "object-cover";
+  const frameStyle = framed
+    ? "bg-[var(--paper)]"
+    : "bg-transparent";
 
   return (
     <div
-      className={`relative overflow-hidden border border-[var(--line)] bg-[var(--paper)] ${className}`}
+      className={`relative overflow-hidden ${frameStyle} ${className}`}
     >
       {src ? (
         <Image

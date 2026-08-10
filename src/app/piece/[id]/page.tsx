@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { FadeIn } from "@/components/FadeIn";
+import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { collections, getCollection, getPiece } from "@/data/collections";
 
@@ -21,27 +21,28 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
 
   const collection = getCollection(piece.collectionSlug);
   const images = piece.images.length > 0 ? piece.images : [undefined, undefined];
+  const hasDetails = Boolean(
+    piece.subtitle || piece.description || piece.material || piece.price,
+  );
 
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
-      <FadeIn className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-        <section className="grid gap-5">
-          {images.map((src, index) => (
-            <ArtworkFrame
-              key={`${piece.id}-${index}`}
-              src={src}
-              alt={`${piece.title} image ${index + 1}`}
-              label={`${piece.title} detail image ${index + 1} placeholder`}
-              className={index === 0 ? "aspect-[4/5]" : "aspect-[5/4]"}
-              fit="contain"
-              sizes="(min-width: 1024px) 660px, 92vw"
-              priority={index === 0}
-            />
-          ))}
-        </section>
+      <FadeIn
+        className={
+          hasDetails
+            ? "mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20"
+            : "mx-auto max-w-4xl"
+        }
+      >
+        <HorizontalArtworkGallery
+          images={images}
+          title={piece.title}
+          landscape={piece.collectionSlug === "collection-02"}
+          unframed={piece.collectionSlug === "collection-02"}
+        />
 
-        <aside className="lg:sticky lg:top-28 lg:self-start">
+        {hasDetails ? <aside className="lg:sticky lg:top-28 lg:self-start">
           <Link
             href={`/collection/${piece.collectionSlug}`}
             className="ukha-caption transition hover:text-[var(--foreground)]"
@@ -80,7 +81,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
           >
             inquiry
           </a>
-        </aside>
+        </aside> : null}
       </FadeIn>
     </main>
   );
