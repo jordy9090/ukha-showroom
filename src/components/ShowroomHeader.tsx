@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function ShowroomHeader() {
   return (
-    <header className="ukha-caption fixed left-0 top-0 z-20 flex w-full items-center justify-between px-5 py-5 sm:px-8">
+    <header className="ukha-caption fixed left-0 top-0 z-20 flex w-full items-center justify-between px-5 py-5 mix-blend-difference sm:px-8">
       <Link
         href="/"
         aria-label="UKHA home"
@@ -16,7 +16,7 @@ export function ShowroomHeader() {
           height={475}
           preload
           sizes="(max-width: 639px) 7rem, 9rem"
-          className="h-auto w-28 sm:w-36"
+          className="h-auto w-28 brightness-0 invert sm:w-36"
         />
       </Link>
       <Link
@@ -30,7 +30,7 @@ export function ShowroomHeader() {
           width={1464}
           height={180}
           sizes="(max-width: 639px) 5rem, 6rem"
-          className="h-auto w-20 opacity-[0.78] mix-blend-multiply transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 sm:w-24"
+          className="h-auto w-20 brightness-0 invert opacity-[0.9] transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 sm:w-24"
         />
       </Link>
     </header>
