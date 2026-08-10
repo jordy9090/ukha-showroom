@@ -101,7 +101,6 @@ export const collections: Collection[] = [
         material: "",
         price: "",
         images: [
-          ukhaImage("collection-02-piece-05-cover.jpg"),
           ukhaImage("collection-02-piece-05-detail-01.jpg"),
           ukhaImage("collection-02-piece-05-detail-02.jpg"),
           ukhaImage("collection-02-piece-05-detail-03.jpg"),
