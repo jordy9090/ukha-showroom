@@ -57,7 +57,7 @@ export const collections: Collection[] = [
         subtitle: "soft ridge ring",
         description:
           "A low, softened ridge traces the finger like a line found after the surface has settled.",
-        material: "Sterling silver, hand finished",
+        material: "Brass",
         price: "Price on inquiry",
         images: [ukhaImage("liminal-ring-01.png")].filter(Boolean),
       },
@@ -68,7 +68,7 @@ export const collections: Collection[] = [
         subtitle: "thin contour ring",
         description:
           "An intentionally restrained contour, shaped to feel present without becoming loud.",
-        material: "Sterling silver, matte polish",
+        material: "Brass",
         price: "Price on inquiry",
         images: [ukhaImage("liminal-ring-02.png")].filter(Boolean),
       },
@@ -79,7 +79,7 @@ export const collections: Collection[] = [
         subtitle: "small hollow ring",
         description:
           "A hollowed form that keeps shadow close to the hand, made for slow inspection.",
-        material: "Sterling silver, oxidized detail",
+        material: "Brass",
         price: "Price on inquiry",
         images: [ukhaImage("liminal-ring-03.png")].filter(Boolean),
       },
@@ -98,7 +98,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 01",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-07-cover.jpg"),
@@ -111,7 +111,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 02",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-06-cover.jpg"),
@@ -126,7 +126,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 03",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-05-detail-01.jpg"),
@@ -141,7 +141,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 04",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-01-cover.jpg"),
@@ -155,7 +155,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 05",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-02-cover.jpg"),
@@ -170,7 +170,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 06",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-03-cover.jpg"),
@@ -183,7 +183,7 @@ export const collections: Collection[] = [
         title: "PANOPTICON: 07",
         subtitle: "",
         description: "",
-        material: "",
+        material: "Brass",
         price: "",
         images: [
           ukhaImage("collection-02-piece-04-cover.jpg"),
