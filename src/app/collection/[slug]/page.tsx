@@ -28,10 +28,19 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-7xl">
+        {isEditorialCollection ? (
+          <section className="grid gap-12 pb-20 pt-14 sm:grid-cols-2 sm:gap-20 sm:pb-32 sm:pt-24">
+            <h1 className="ukha-piece-title self-start">{collection.title}</h1>
+            <p className="max-w-md text-[13px] font-normal leading-[1.95] tracking-[0.045em] text-[var(--muted)] sm:justify-self-end sm:text-[14px]">
+              {collection.description}
+            </p>
+          </section>
+        ) : null}
+
         <section
           className={
             isEditorialCollection
-              ? "mx-auto flex flex-col gap-24 pt-14 sm:gap-36 sm:pt-20"
+              ? "mx-auto flex flex-col gap-24 sm:gap-36"
               : "mx-auto flex max-w-4xl flex-col gap-20 pt-10 sm:gap-24"
           }
         >

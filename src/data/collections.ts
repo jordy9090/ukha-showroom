@@ -90,7 +90,7 @@ export const collections: Collection[] = [
     title: "PANOPTICON",
     handwrittenTitleImage: "",
     coverImage: ukhaImage("collection-02-cover.png"),
-    description: "",
+    description: "PANOPTICON reimagines the prison as a stage for everyday role-playing. Conscious of the gaze of others, we perform identities shaped by relationships and external conditions. Within this space of invisible surveillance, the collection imagines the characters who might inhabit each cell.",
     pieces: [
       {
         id: "collection-02-piece-07",
