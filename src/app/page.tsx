@@ -38,23 +38,6 @@ export default function Home() {
       </section>
 
       <section className="relative flex min-h-screen flex-col items-center justify-center py-24">
-        <motion.div
-          aria-hidden="true"
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 0.13, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="pointer-events-none absolute bottom-[8vh] left-1/2 h-[44vh] w-[min(86vw,820px)] -translate-x-1/2 mix-blend-multiply"
-        >
-          <Image
-            src="/images/ukha/liminal-cover-transparent.png"
-            alt=""
-            fill
-            sizes="(max-width: 953px) 86vw, 820px"
-            className="object-contain object-bottom"
-          />
-        </motion.div>
-
         <div className="relative z-10 flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
