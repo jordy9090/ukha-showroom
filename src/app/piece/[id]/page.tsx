@@ -54,7 +54,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
 
           <details className="group mt-12">
             <summary className="ukha-caption inline-flex cursor-pointer list-none border-b border-[var(--foreground)] pb-1 transition hover:text-[var(--muted)] [&::-webkit-details-marker]:hidden">
-              inquiry
+              INQUIRY
             </summary>
             <div className="ukha-note mt-5 flex flex-col items-start gap-2">
               <a href="mailto:ukhastudio@gmail.com?subject=UKHA%20piece%20inquiry">
