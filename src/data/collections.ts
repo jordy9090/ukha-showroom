@@ -103,7 +103,6 @@ export const collections: Collection[] = [
         images: [
           ukhaImage("collection-02-piece-05-detail-01.jpg"),
           ukhaImage("collection-02-piece-05-detail-02.jpg"),
-          ukhaImage("collection-02-piece-05-detail-03.jpg"),
           ukhaImage("collection-02-piece-05-detail-04.jpg"),
           ukhaImage("collection-02-piece-05-detail-05.jpg"),
         ].filter(Boolean),
