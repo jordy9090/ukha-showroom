@@ -114,9 +114,12 @@ button {
 @media (max-width: 639px) {
   .archive-grain img {
     filter: sepia(0.12) saturate(0.94) contrast(1.025);
+    object-fit: contain;
+    transform: scale(0.84);
   }
 
   .archive-grain::after {
+    inset: 8%;
     background-size: 145px 145px;
     mix-blend-mode: overlay;
     opacity: 0.38;

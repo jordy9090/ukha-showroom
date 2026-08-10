@@ -35,7 +35,7 @@ export default function ArchiveNotePage() {
           />
         </section>
 
-        <section className="ukha-horizontal-gallery -mx-6 flex h-[34svh] snap-x snap-mandatory items-center gap-5 overflow-x-auto px-6 pb-6 sm:relative sm:mx-0 sm:block sm:h-[1040px] sm:overflow-visible sm:px-0 sm:pb-0 lg:h-[1120px]">
+        <section className="ukha-horizontal-gallery -mx-6 flex h-[34svh] snap-x snap-mandatory scroll-px-[16vw] items-center gap-5 overflow-x-auto px-[16vw] pb-6 sm:relative sm:mx-0 sm:block sm:h-[1040px] sm:overflow-visible sm:px-0 sm:pb-0 lg:h-[1120px]">
           {visibleArchiveNotes.map((note, index) => (
             <div
               key={note.id}
