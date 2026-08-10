@@ -240,6 +240,20 @@ export const archiveNotes: ArchiveNote[] = [
     src: ukhaImage("archive-note-pc280006.jpg"),
     aspect: "landscape",
   },
+  {
+    id: "archive-note-9776",
+    title: "archive note 9776",
+    category: "record",
+    src: ukhaImage("archive-note-9776.jpg"),
+    aspect: "landscape",
+  },
+  {
+    id: "archive-note-9778",
+    title: "archive note 9778",
+    category: "record",
+    src: ukhaImage("archive-note-9778.jpg"),
+    aspect: "landscape",
+  },
 ];
 
 // Edit these lines to update the small visit-page description.
