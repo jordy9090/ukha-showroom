@@ -5,15 +5,15 @@ import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { archiveNotes } from "@/data/collections";
 
 const archivePlacements = [
-  "col-span-2 w-[88%] justify-self-start sm:left-[1%] sm:top-[2%] sm:z-10 sm:h-[310px] sm:w-[43%]",
-  "col-span-1 w-full sm:left-[37%] sm:top-[7%] sm:z-30 sm:h-[230px] sm:w-[21%]",
-  "col-span-1 w-full sm:right-[2%] sm:top-[1%] sm:z-20 sm:h-[290px] sm:w-[31%]",
-  "col-span-1 w-full sm:left-[8%] sm:top-[25%] sm:z-20 sm:h-[410px] sm:w-[28%]",
-  "col-span-1 w-full sm:left-[30%] sm:top-[21%] sm:z-10 sm:h-[350px] sm:w-[43%]",
-  "col-span-2 w-[86%] justify-self-end sm:right-[1%] sm:top-[34%] sm:z-30 sm:h-[360px] sm:w-[32%]",
-  "col-span-2 w-[78%] justify-self-start sm:left-[1%] sm:top-[54%] sm:z-10 sm:h-[350px] sm:w-[42%]",
-  "col-span-1 w-full sm:left-[35%] sm:top-[61%] sm:z-30 sm:h-[300px] sm:w-[27%]",
-  "col-span-1 w-full sm:right-[2%] sm:top-[67%] sm:z-20 sm:h-[410px] sm:w-[39%]",
+  "col-span-2 w-[84%] justify-self-start sm:left-[4%] sm:top-[14%] sm:z-10 sm:h-[225px] sm:w-[25%]",
+  "col-span-1 w-full sm:left-[31%] sm:top-[1%] sm:z-30 sm:h-[185px] sm:w-[14%]",
+  "col-span-1 w-full sm:right-[6%] sm:top-[5%] sm:z-20 sm:h-[175px] sm:w-[20%]",
+  "col-span-1 w-full sm:left-[12%] sm:top-[35%] sm:z-30 sm:h-[300px] sm:w-[22%]",
+  "col-span-1 w-full sm:left-[30%] sm:top-[24%] sm:z-10 sm:h-[330px] sm:w-[42%]",
+  "col-span-2 w-[84%] justify-self-end sm:right-[3%] sm:top-[28%] sm:z-20 sm:h-[250px] sm:w-[30%]",
+  "col-span-2 w-[78%] justify-self-start sm:left-[2%] sm:top-[65%] sm:z-10 sm:h-[285px] sm:w-[28%]",
+  "col-span-1 w-full sm:left-[35%] sm:top-[61%] sm:z-30 sm:h-[225px] sm:w-[24%]",
+  "col-span-1 w-full sm:right-[2%] sm:top-[60%] sm:z-20 sm:h-[330px] sm:w-[37%]",
 ];
 
 export default function ArchiveNotePage() {
@@ -23,19 +23,19 @@ export default function ArchiveNotePage() {
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-7xl">
-        <section className="pb-8 pt-10 sm:pb-4">
+        <section className="pb-8 pt-10 sm:absolute sm:left-10 sm:top-24 sm:z-40 sm:p-0">
           <Image
             src="/images/ukha/nav-archive.png"
             alt="archive"
             width={1470}
             height={201}
-            sizes="(max-width: 640px) 42vw, 260px"
-            className="h-auto w-[min(42vw,260px)] opacity-[0.72] mix-blend-multiply"
+            sizes="(max-width: 640px) 42vw, 150px"
+            className="h-auto w-[min(42vw,150px)] opacity-[0.72] mix-blend-multiply"
             priority
           />
         </section>
 
-        <section className="relative grid grid-cols-2 gap-x-4 gap-y-10 pb-20 sm:block sm:h-[1720px] sm:pb-0 lg:h-[1900px]">
+        <section className="relative grid grid-cols-2 gap-x-4 gap-y-10 pb-20 sm:block sm:h-[1040px] sm:pb-0 lg:h-[1120px]">
           {visibleArchiveNotes.map((note, index) => (
             <div
               key={note.id}
