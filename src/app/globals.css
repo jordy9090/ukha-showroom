@@ -85,7 +85,7 @@ button {
 
 .ukha-piece-title {
   color: var(--foreground);
-  font-size: clamp(1rem, 2.5vw, 1.75rem);
+  font-size: clamp(0.9rem, 2.1vw, 1.5rem);
   font-weight: 400;
   letter-spacing: 0.26em;
   line-height: 1.15;
