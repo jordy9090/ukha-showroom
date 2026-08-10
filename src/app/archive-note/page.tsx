@@ -55,7 +55,10 @@ export default function ArchiveNotePage() {
           />
         </section>
 
-        <section className="ukha-horizontal-gallery absolute inset-x-0 top-0 flex h-svh snap-x snap-mandatory scroll-px-[16vw] items-center gap-5 overflow-x-auto px-[16vw] sm:hidden">
+        <section
+          aria-hidden="true"
+          className="hidden"
+        >
           {visibleArchiveNotes.map((note, index) => (
             <div
               key={note.id}
@@ -75,7 +78,10 @@ export default function ArchiveNotePage() {
           ))}
         </section>
 
-        <section className="ukha-horizontal-gallery -mx-10 mt-[11svh] hidden h-[78svh] snap-x snap-mandatory overflow-x-auto px-10 sm:flex">
+        <section
+          aria-hidden="true"
+          className="hidden"
+        >
           {archivePages.map((page, pageIndex) => (
             <div
               key={`archive-page-${pageIndex}`}
