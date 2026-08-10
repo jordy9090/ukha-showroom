@@ -63,7 +63,7 @@ export default function ArchiveNotePage() {
           ))}
         </section>
 
-        <section className="ukha-horizontal-gallery -mx-10 hidden h-svh snap-x snap-mandatory overflow-x-auto px-10 sm:flex">
+        <section className="ukha-horizontal-gallery -mx-10 mt-[11svh] hidden h-[78svh] snap-x snap-mandatory overflow-x-auto px-10 sm:flex">
           {archivePages.map((page, pageIndex) => (
             <div
               key={`archive-page-${pageIndex}`}
