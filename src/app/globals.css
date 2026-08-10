@@ -111,6 +111,18 @@ button {
   opacity: 0.28;
 }
 
+@media (max-width: 639px) {
+  .archive-grain img {
+    filter: sepia(0.12) saturate(0.94) contrast(1.025);
+  }
+
+  .archive-grain::after {
+    background-size: 145px 145px;
+    mix-blend-mode: overlay;
+    opacity: 0.38;
+  }
+}
+
 @media (min-width: 640px) {
   .ukha-caption {
     font-size: 11px;
