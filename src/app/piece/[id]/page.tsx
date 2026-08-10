@@ -44,7 +44,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
         />
 
         {isPanopticon ? (
-          <h1 className="ukha-piece-title mt-6 text-center !text-[clamp(1rem,2.5vw,1.75rem)]">
+          <h1 className="ukha-piece-title mt-6 text-center">
             {piece.title}
           </h1>
         ) : null}
