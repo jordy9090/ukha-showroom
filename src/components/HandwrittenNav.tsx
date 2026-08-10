@@ -14,6 +14,7 @@ const navItems = [
     width: 1492,
     height: 179,
     className: "w-[min(48vw,360px)]",
+    opacityClass: "opacity-[0.78]",
   },
   {
     href: "/archive-note",
@@ -22,6 +23,7 @@ const navItems = [
     width: 1470,
     height: 201,
     className: "w-[min(40vw,300px)]",
+    opacityClass: "opacity-[0.47]",
   },
   {
     href: "/offline-shop",
@@ -30,6 +32,7 @@ const navItems = [
     width: 1347,
     height: 285,
     className: "w-[min(32vw,240px)]",
+    opacityClass: "opacity-[0.47]",
   },
   {
     href: "/menu",
@@ -38,6 +41,7 @@ const navItems = [
     width: 1464,
     height: 180,
     className: "w-[min(36vw,260px)]",
+    opacityClass: "opacity-[0.78]",
     isMenu: true,
   },
 ];
@@ -68,7 +72,7 @@ export function HandwrittenNav({
             width={item.width}
             height={item.height}
             sizes="(max-width: 640px) 48vw, 360px"
-            className={`${item.className} h-auto object-contain opacity-[0.78] mix-blend-multiply transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100`}
+            className={`${item.className} ${item.opacityClass} h-auto object-contain mix-blend-multiply transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100`}
           />
         </Link>
       ))}

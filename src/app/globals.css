@@ -21,6 +21,18 @@ body {
   font-family: var(--font-sans);
 }
 
+img {
+  border: 0;
+}
+
+.ukha-horizontal-gallery {
+  scrollbar-width: none;
+}
+
+.ukha-horizontal-gallery::-webkit-scrollbar {
+  display: none;
+}
+
 ::selection {
   background: #d9d1c2;
   color: #201f1b;
@@ -67,6 +79,10 @@ button {
   text-transform: none;
 }
 
+.ukha-note.ukha-contact {
+  font-size: 14.3px;
+}
+
 .ukha-piece-title {
   color: var(--foreground);
   font-size: clamp(1.35rem, 4vw, 2.5rem);
@@ -94,5 +110,9 @@ button {
 
   .ukha-note {
     font-size: 12px;
+  }
+
+  .ukha-note.ukha-contact {
+    font-size: 15.6px;
   }
 }

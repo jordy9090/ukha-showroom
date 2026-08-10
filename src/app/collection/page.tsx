@@ -7,6 +7,8 @@ import { collections } from "@/data/collections";
 
 // Collection names are intentionally omitted from the listing.
 export default function CollectionPage() {
+  const newestFirstCollections = [...collections].reverse();
+
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
@@ -21,8 +23,8 @@ export default function CollectionPage() {
             className="mx-auto mb-12 h-auto w-[min(46vw,300px)] opacity-[0.76] mix-blend-multiply"
             priority
           />
-          <div className="flex flex-col items-center gap-14">
-            {collections.map((collection) => (
+          <div className="flex flex-col items-center gap-[3.9rem] sm:gap-[5.46rem]">
+            {newestFirstCollections.map((collection) => (
               <Link
                 key={collection.slug}
                 href={`/collection/${collection.slug}`}
@@ -32,10 +34,15 @@ export default function CollectionPage() {
                   <ArtworkFrame
                     src={collection.coverImage}
                     alt={`${collection.title} collection image`}
-                    className="aspect-[16/10] w-full max-w-4xl"
+                    className={
+                      collection.slug === "collection-02"
+                        ? "aspect-[1.39/1] w-full max-w-4xl"
+                        : "aspect-[16/10] w-full max-w-4xl"
+                    }
                     fit="contain"
                     sizes="(min-width: 1024px) 896px, 92vw"
                     priority
+                    framed={false}
                   />
                 ) : null}
               </Link>

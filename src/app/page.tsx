@@ -47,7 +47,7 @@ export default function Home() {
           className="pointer-events-none absolute bottom-[8vh] left-1/2 h-[44vh] w-[min(86vw,820px)] -translate-x-1/2 mix-blend-multiply"
         >
           <Image
-            src="/images/ukha/liminal-cover.png"
+            src="/images/ukha/liminal-cover-transparent.png"
             alt=""
             fill
             sizes="(max-width: 953px) 86vw, 820px"
