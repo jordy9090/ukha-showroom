@@ -38,22 +38,13 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
 
           <div className="mt-10 space-y-7 border-t border-[var(--line)] pt-7">
             <section>
-              <h2 className="ukha-caption mb-2">
-                description
-              </h2>
               <p className="ukha-note">{piece.description || "—"}</p>
             </section>
             <section>
-              <h2 className="ukha-caption mb-2">
-                material
-              </h2>
               <p className="ukha-note">{piece.material || "—"}</p>
             </section>
             <section>
-              <h2 className="ukha-caption mb-2">
-                price
-              </h2>
-              <p className="ukha-note">{piece.price || "—"}</p>
+              <p className="ukha-note">PRICE: {piece.price || "—"}</p>
             </section>
           </div>
 
