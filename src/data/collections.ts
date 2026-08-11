@@ -97,7 +97,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 01",
         subtitle: "",
-        description: "",
+        description: "Where does the boundary end?",
         material: "Brass",
         price: "",
         images: [
@@ -110,7 +110,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 02",
         subtitle: "",
-        description: "",
+        description: "Who defines freedom?",
         material: "Brass",
         price: "",
         images: [
@@ -125,7 +125,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 03",
         subtitle: "",
-        description: "",
+        description: "What remains after destruction?",
         material: "Brass",
         price: "",
         images: [
@@ -140,7 +140,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 04",
         subtitle: "",
-        description: "",
+        description: "Is fragility a weakness?",
         material: "Brass",
         price: "",
         images: [
@@ -154,7 +154,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 05",
         subtitle: "",
-        description: "",
+        description: "Is isolation ever complete?",
         material: "Brass",
         price: "",
         images: [
@@ -169,7 +169,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 06",
         subtitle: "",
-        description: "",
+        description: "Who watches the watcher?",
         material: "Brass",
         price: "",
         images: [
@@ -182,7 +182,7 @@ export const collections: Collection[] = [
         collectionSlug: "collection-02",
         title: "PANOPTICON: 07",
         subtitle: "",
-        description: "",
+        description: "Can resistance be contained?",
         material: "Brass",
         price: "",
         images: [
@@ -190,6 +190,19 @@ export const collections: Collection[] = [
           ukhaImage("collection-02-piece-04-detail-01.jpg"),
           ukhaImage("collection-02-piece-04-detail-02.jpg"),
           ukhaImage("collection-02-piece-04-detail-03.jpg"),
+        ].filter(Boolean),
+      },
+      {
+        id: "collection-02-piece-08",
+        collectionSlug: "collection-02",
+        title: "PANOPTICON: 08",
+        subtitle: "",
+        description: "When does repetition become instinct?",
+        material: "Brass",
+        price: "",
+        images: [
+          ukhaImage("collection-02-piece-08-cover.jpg"),
+          ukhaImage("collection-02-piece-08-detail.jpg"),
         ].filter(Boolean),
       },
     ],

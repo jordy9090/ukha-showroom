@@ -11,8 +11,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Times New Roman", Times, Georgia, serif;
-  --font-serif: "Times New Roman", Times, Georgia, serif;
+  --font-sans: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
@@ -97,6 +97,41 @@ button {
   background:
     radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.58), transparent 30rem),
     var(--background);
+}
+
+.panopticon-page {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.58), transparent 30rem),
+    linear-gradient(
+      to bottom,
+      var(--background) 0%,
+      var(--background) 38%,
+      #d3cfc6 62%,
+      #77736b 78%,
+      #1b1a17 100%
+    );
+}
+
+.panopticon-desktop-visual {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    filter 520ms ease,
+    opacity 520ms ease,
+    transform 520ms ease;
+}
+
+.panopticon-desktop-visual.is-muted {
+  filter: blur(12px);
+  opacity: 0.25;
+  transform: scale(0.92);
+}
+
+.panopticon-desktop-visual.is-active {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 .archive-grain::after {
