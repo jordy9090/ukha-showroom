@@ -27,50 +27,48 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
       <FadeIn className="relative z-10 mx-auto max-w-7xl">
         {isEditorialCollection ? (
           <>
-            <section className="ukha-horizontal-gallery -mx-6 flex snap-x snap-mandatory gap-7 overflow-x-auto px-6 pb-20 pt-2 sm:hidden">
-              {collection.pieces.map((piece, index) => (
-                <Link
-                  key={piece.id}
-                  href={`/piece/${piece.id}`}
-                  className="w-[72vw] max-w-[300px] shrink-0 snap-center"
-                >
-                  <ArtworkFrame
-                    src={piece.images[0]}
-                    alt={piece.title}
-                    label={`${piece.title} image placeholder`}
-                    className="aspect-[4/5] w-full"
-                    fit="contain"
-                    sizes="72vw"
-                    priority={index === 0}
-                    framed={false}
-                  />
-                  <span className="mt-3 block text-center text-[9px] tracking-[0.18em] text-[var(--muted)]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </Link>
-              ))}
-            </section>
-
             <PanopticonDesktopGallery pieces={collection.pieces} />
 
             <PanopticonOutro title={collection.title} description={collection.description} />
           </>
         ) : (
-          <section className="mx-auto flex max-w-4xl flex-col gap-20 pt-10 sm:gap-24">
-            {collection.pieces.map((piece, index) => (
-              <Link key={piece.id} href={`/piece/${piece.id}`} className="group block">
+          <>
+          <section className="mx-auto flex w-full max-w-6xl flex-col items-center gap-[12vh] py-8">
+            {collection.pieces.map((piece, index) => {
+              const keepsPortraitRatio = [3, 5, 6].includes(index);
+              const positionClass = [
+                "self-center",
+                "self-start sm:ml-[7%]",
+                "self-end sm:mr-[8%]",
+                "ml-[8%] self-center sm:ml-[16%]",
+              ][index % 4];
+
+              return (
+              <Link
+                key={piece.id}
+                href={`/piece/${piece.id}`}
+                className={`group relative block ${keepsPortraitRatio ? "w-[64vw] max-w-[270px] sm:w-[34%]" : "w-[72vw] max-w-[300px] sm:w-[38%]"} sm:max-w-none ${positionClass}`}
+              >
                 <ArtworkFrame
                   src={piece.images[0]}
                   alt={piece.title}
                   label={`${piece.title} image placeholder`}
-                  className="aspect-[4/5] w-full"
-                  fit="contain"
-                  sizes="(min-width: 1024px) 896px, 92vw"
+                  className={`${keepsPortraitRatio ? "aspect-[3/4]" : "aspect-[4/3]"} w-full`}
+                  fit="cover"
+                  sizes="(min-width: 640px) 38vw, 72vw"
                   priority={index === 0}
+                  framed={false}
                 />
+                <span className="mt-2 block text-center text-[9px] tracking-[0.18em] text-[var(--muted)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </Link>
-            ))}
+              );
+            })}
           </section>
+
+          <PanopticonOutro title={collection.title} description={collection.description} />
+          </>
         )}
       </FadeIn>
     </main>

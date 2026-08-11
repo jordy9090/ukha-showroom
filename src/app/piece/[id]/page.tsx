@@ -24,9 +24,6 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
   }
 
   const images = piece.images.length > 0 ? piece.images : [undefined, undefined];
-  const displayedDescription = piece.description
-    ? sentenceCase(piece.description)
-    : "—";
   const displayedMaterial = piece.material
     ? sentenceCase(piece.material)
     : "—";
@@ -52,9 +49,6 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
           </h1>
 
           <div className="mt-10 space-y-7 border-t border-[var(--line)] pt-7">
-            <section>
-              <p className="ukha-note">{displayedDescription}</p>
-            </section>
             <section>
               <p className="ukha-note">{displayedMaterial}</p>
             </section>
