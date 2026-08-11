@@ -56,7 +56,7 @@ export function PanopticonOutro({ title, description }: PanopticonOutroProps) {
         className="pointer-events-none fixed inset-0 z-10 flex items-center justify-center px-8"
         style={{
           opacity: progress,
-          backgroundColor: `rgba(12, 12, 11, ${0.82 * progress})`,
+          backgroundColor: "#0c0c0b",
           backdropFilter: `blur(${18 * progress}px)`,
           WebkitBackdropFilter: `blur(${18 * progress}px)`,
         }}

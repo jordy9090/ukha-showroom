@@ -44,7 +44,7 @@ const ukhaImage = (filename: string) => {
 export const collections: Collection[] = [
   {
     slug: "liminal",
-    title: "liminal",
+    title: "LIMINAL",
     handwrittenTitleImage: "",
     coverImage: ukhaImage("liminal-cover-transparent.png"),
     description:
