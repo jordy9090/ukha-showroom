@@ -18,29 +18,20 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
   }
 
   const isEditorialCollection = collection.slug === "collection-02";
-  const editorialPlacements = [
-    "sm:col-span-3 sm:col-start-1",
-    "translate-y-8 sm:col-span-4 sm:col-start-5 sm:translate-y-14",
-    "sm:col-span-3 sm:col-start-10 sm:translate-y-3",
-    "sm:col-span-3 sm:col-start-2",
-    "translate-y-8 sm:col-span-4 sm:col-start-6 sm:translate-y-16",
-    "sm:col-span-3 sm:col-start-10 sm:translate-y-2",
-    "sm:col-span-3 sm:col-start-4",
-  ];
-  const editorialAspects = [
-    "aspect-[4/5]",
-    "aspect-[5/4]",
-    "aspect-square",
-    "aspect-[5/6]",
-    "aspect-[4/3]",
-    "aspect-[3/4]",
-    "aspect-square",
+  const panopticonPositions = [
+    { left: "50%", top: "4%" },
+    { left: "79%", top: "21%" },
+    { left: "86%", top: "57%" },
+    { left: "63%", top: "83%" },
+    { left: "28%", top: "83%" },
+    { left: "8%", top: "55%" },
+    { left: "16%", top: "20%" },
   ];
 
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
-      <FadeIn className="mx-auto max-w-7xl">
+      <FadeIn className="relative z-10 mx-auto max-w-7xl">
         {isEditorialCollection ? (
           <section className="grid gap-12 pb-20 pt-14 sm:grid-cols-2 sm:gap-20 sm:pb-32 sm:pt-24">
             <h1 className="ukha-piece-title self-start">{collection.title}</h1>
@@ -50,49 +41,76 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
           </section>
         ) : null}
 
-        <section
-          className={
-            isEditorialCollection
-              ? "mx-auto grid grid-cols-2 gap-x-5 gap-y-20 pb-20 sm:grid-cols-12 sm:gap-x-7 sm:gap-y-28 sm:pb-28"
-              : "mx-auto flex max-w-4xl flex-col gap-20 pt-10 sm:gap-24"
-          }
-        >
-          {collection.pieces.map((piece, index) => (
-            <Link
-              key={piece.id}
-              href={`/piece/${piece.id}`}
-              className={
-                isEditorialCollection
-                  ? `group ${editorialPlacements[index % editorialPlacements.length]}`
-                  : "group block"
-              }
-            >
-              <ArtworkFrame
-                src={piece.images[0]}
-                alt={piece.title}
-                label={`${piece.title} image placeholder`}
-                className={
-                  isEditorialCollection
-                    ? `${editorialAspects[index % editorialAspects.length]} w-full [&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img]:scale-[1.015]`
-                    : "aspect-[4/5] w-full"
-                }
-                fit="contain"
-                sizes={
-                  isEditorialCollection
-                    ? "(min-width: 1024px) 74vw, 82vw"
-                    : "(min-width: 1024px) 896px, 92vw"
-                }
-                priority={index === 0}
-                framed={!isEditorialCollection}
-              />
-              {isEditorialCollection ? (
-                <span className="mt-3 block text-[9px] tracking-[0.18em] text-[var(--muted)]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              ) : null}
-            </Link>
-          ))}
-        </section>
+        {isEditorialCollection ? (
+          <>
+            <section className="ukha-horizontal-gallery -mx-6 flex snap-x snap-mandatory gap-7 overflow-x-auto px-6 pb-20 pt-2 sm:hidden">
+              {collection.pieces.map((piece, index) => (
+                <Link
+                  key={piece.id}
+                  href={`/piece/${piece.id}`}
+                  className="w-[72vw] max-w-[300px] shrink-0 snap-center"
+                >
+                  <ArtworkFrame
+                    src={piece.images[0]}
+                    alt={piece.title}
+                    label={`${piece.title} image placeholder`}
+                    className="aspect-[4/5] w-full"
+                    fit="contain"
+                    sizes="72vw"
+                    priority={index === 0}
+                    framed={false}
+                  />
+                  <span className="mt-3 block text-center text-[9px] tracking-[0.18em] text-[var(--muted)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </Link>
+              ))}
+            </section>
+
+            <section className="relative mx-auto mb-24 hidden aspect-square w-full max-w-[980px] sm:block">
+              {collection.pieces.map((piece, index) => (
+                <Link
+                  key={piece.id}
+                  href={`/piece/${piece.id}`}
+                  className="group absolute z-10 w-[22%] -translate-x-1/2 -translate-y-1/2 transition-[z-index] hover:z-30 focus-visible:z-30"
+                  style={panopticonPositions[index % panopticonPositions.length]}
+                >
+                  <div className="transition-transform duration-500 ease-out group-hover:scale-[1.32] group-focus-visible:scale-[1.32]">
+                    <ArtworkFrame
+                      src={piece.images[0]}
+                      alt={piece.title}
+                      label={`${piece.title} image placeholder`}
+                      className="aspect-square w-full"
+                      fit="contain"
+                      sizes="(min-width: 1024px) 216px, 22vw"
+                      priority={index === 0}
+                      framed={false}
+                    />
+                    <span className="mt-2 block text-center text-[9px] tracking-[0.18em] text-[var(--muted)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </section>
+          </>
+        ) : (
+          <section className="mx-auto flex max-w-4xl flex-col gap-20 pt-10 sm:gap-24">
+            {collection.pieces.map((piece, index) => (
+              <Link key={piece.id} href={`/piece/${piece.id}`} className="group block">
+                <ArtworkFrame
+                  src={piece.images[0]}
+                  alt={piece.title}
+                  label={`${piece.title} image placeholder`}
+                  className="aspect-[4/5] w-full"
+                  fit="contain"
+                  sizes="(min-width: 1024px) 896px, 92vw"
+                  priority={index === 0}
+                />
+              </Link>
+            ))}
+          </section>
+        )}
       </FadeIn>
     </main>
   );
