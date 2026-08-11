@@ -18,10 +18,23 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
   }
 
   const isEditorialCollection = collection.slug === "collection-02";
-  const editorialWidths = [
-    "w-[86%] sm:w-[72%]",
-    "w-[84%] sm:w-[70%]",
-    "w-[86%] sm:w-[72%]",
+  const editorialPlacements = [
+    "sm:col-span-3 sm:col-start-1",
+    "translate-y-8 sm:col-span-4 sm:col-start-5 sm:translate-y-14",
+    "sm:col-span-3 sm:col-start-10 sm:translate-y-3",
+    "sm:col-span-3 sm:col-start-2",
+    "translate-y-8 sm:col-span-4 sm:col-start-6 sm:translate-y-16",
+    "sm:col-span-3 sm:col-start-10 sm:translate-y-2",
+    "sm:col-span-3 sm:col-start-4",
+  ];
+  const editorialAspects = [
+    "aspect-[4/5]",
+    "aspect-[5/4]",
+    "aspect-square",
+    "aspect-[5/6]",
+    "aspect-[4/3]",
+    "aspect-[3/4]",
+    "aspect-square",
   ];
 
   return (
@@ -40,7 +53,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
         <section
           className={
             isEditorialCollection
-              ? "mx-auto flex flex-col gap-24 sm:gap-36"
+              ? "mx-auto grid grid-cols-2 gap-x-5 gap-y-20 pb-20 sm:grid-cols-12 sm:gap-x-7 sm:gap-y-28 sm:pb-28"
               : "mx-auto flex max-w-4xl flex-col gap-20 pt-10 sm:gap-24"
           }
         >
@@ -50,7 +63,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
               href={`/piece/${piece.id}`}
               className={
                 isEditorialCollection
-                  ? `group flex w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`
+                  ? `group ${editorialPlacements[index % editorialPlacements.length]}`
                   : "group block"
               }
             >
@@ -60,7 +73,7 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
                 label={`${piece.title} image placeholder`}
                 className={
                   isEditorialCollection
-                    ? `aspect-[4/3] ${editorialWidths[index % editorialWidths.length]} [&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img]:scale-[1.015]`
+                    ? `${editorialAspects[index % editorialAspects.length]} w-full [&_img]:transition-transform [&_img]:duration-700 group-hover:[&_img]:scale-[1.015]`
                     : "aspect-[4/5] w-full"
                 }
                 fit="contain"
@@ -72,6 +85,11 @@ export default async function CollectionDetailPage(props: PageProps<"/collection
                 priority={index === 0}
                 framed={!isEditorialCollection}
               />
+              {isEditorialCollection ? (
+                <span className="mt-3 block text-[9px] tracking-[0.18em] text-[var(--muted)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              ) : null}
             </Link>
           ))}
         </section>
