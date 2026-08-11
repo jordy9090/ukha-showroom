@@ -63,13 +63,13 @@ export function PanopticonOutro({ title, description }: PanopticonOutroProps) {
       >
         <div className="flex max-w-xl flex-col items-center gap-8 text-center sm:gap-10">
           <h2
-            className="text-[17px] font-normal tracking-[0.28em] text-white sm:text-[21px]"
+            className="text-[17px] font-[450] tracking-[0.28em] text-white sm:text-[21px]"
             style={{ opacity: titleOpacity }}
           >
             {title}
           </h2>
           <p
-            className="text-[13px] font-normal leading-[2] tracking-[0.045em] text-[#f0ede6] sm:text-[14px]"
+            className="text-[13px] font-[450] leading-[2] tracking-[0.045em] text-[#f0ede6] sm:text-[14px]"
             style={{ opacity: descriptionOpacity }}
           >
             {description}

@@ -1,44 +1,38 @@
-import { ArtworkFrame } from "@/components/ArtworkFrame";
-
 type HorizontalArtworkGalleryProps = {
   images: Array<string | undefined>;
   title: string;
-  landscape?: boolean;
-  unframed?: boolean;
 };
 
 export function HorizontalArtworkGallery({
   images,
   title,
-  landscape = false,
-  unframed = false,
 }: HorizontalArtworkGalleryProps) {
   return (
-    <section>
+    <section className="min-w-0 w-full max-w-full overflow-hidden">
       <div
-        className="ukha-horizontal-gallery flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:gap-6"
+        className="ukha-horizontal-gallery flex w-full max-w-full snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-2"
       >
         {images.map((src, index) => (
           <div
             key={`${title}-${index}`}
-            className="min-w-[88%] snap-start sm:min-w-[82%]"
+            className="flex h-[63vw] max-h-[520px] flex-none snap-start items-center sm:h-[46vw] lg:h-[430px]"
           >
-            <ArtworkFrame
-              src={src}
-              alt={`${title} image ${index + 1}`}
-              label={`${title} detail image ${index + 1} placeholder`}
-              className={
-                landscape
-                  ? "aspect-[4/3]"
-                  : index === 0
-                    ? "aspect-[4/5]"
-                    : "aspect-[5/4]"
-              }
-              fit="contain"
-              sizes="(min-width: 1024px) 760px, 82vw"
-              priority={index === 0}
-              framed={!unframed}
-            />
+            {src ? (
+              // Intrinsic width keeps the visible gap equal for mixed portrait and landscape photos.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={src}
+                alt={`${title} image ${index + 1}`}
+                className="block h-full w-auto max-w-none object-contain"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            ) : (
+              <div
+                role="img"
+                aria-label={`${title} detail image ${index + 1} placeholder`}
+                className="aspect-[4/3] h-full bg-transparent"
+              />
+            )}
           </div>
         ))}
       </div>
