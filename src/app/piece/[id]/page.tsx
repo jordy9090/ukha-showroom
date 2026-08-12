@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/FadeIn";
 import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery";
+import { CopyEmail } from "@/components/CopyEmail";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { collections, getPiece } from "@/data/collections";
 
@@ -68,9 +69,7 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
               INQUIRY
             </summary>
             <div className="ukha-note mt-5 flex flex-col items-start gap-2">
-              <a href="mailto:ukhastudio@gmail.com?subject=UKHA%20piece%20inquiry">
-                ukhastudio@gmail.com
-              </a>
+              <CopyEmail className="cursor-pointer text-inherit" />
               <a
                 href="https://www.instagram.com/ukha_studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"

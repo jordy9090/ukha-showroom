@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArtworkFrame } from "@/components/ArtworkFrame";
+import { CopyEmail } from "@/components/CopyEmail";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { offlineShopImages, visitCopy } from "@/data/collections";
@@ -25,9 +26,9 @@ export default function OfflineShopPage() {
               priority
             />
           </div>
-          <div className="ukha-note max-w-md">
+          <div className="ukha-note max-w-md space-y-6 leading-[2]">
             {visitCopy.map((line) => (
-              <p key={line}>{line}</p>
+              <p key={line} className="whitespace-pre-line">{line}</p>
             ))}
           </div>
         </section>
@@ -49,7 +50,7 @@ export default function OfflineShopPage() {
         </section>
 
         <section className="ukha-note ukha-contact mt-16 flex flex-col items-end pb-4 text-right">
-          <a href="mailto:ukhastudio@gmail.com">ukhastudio@gmail.com</a>
+          <CopyEmail className="cursor-pointer text-inherit" />
           <a
             href="https://www.instagram.com/ukha_studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"

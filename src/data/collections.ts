@@ -339,8 +339,8 @@ export const archiveNotes: ArchiveNote[] = [
 
 // Edit these lines to update the small visit-page description.
 export const visitCopy = [
-  "Address text will be placed here.",
-  "Future opening hours, appointment notes, and studio visit details can live here.",
+  "모든 작품은 한 피스만 제작되며 재생산되지 않습니다.\n하나뿐인 작품을 구매하기를 원하시면 디엠이나 이메일로 연락주시기 바랍니다.",
+  "Each work is created as a one-of-a-kind piece and will not be reproduced.\nIf you would like to purchase a unique work, please contact us via Instagram DM or email.",
 ];
 
 // Replace src values with future showroom/studio photos.
