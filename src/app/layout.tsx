@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "UKHA Showroom",
-  description: "A quiet jewelry showroom and archive for UKHA.",
+  title: "UKHA studio",
+  description: "A jewelry showroom and archive for UKHA.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
