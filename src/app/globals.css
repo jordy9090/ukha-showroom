@@ -129,6 +129,14 @@ button {
     var(--background);
 }
 
+.ukha-home-background {
+  background-color: #c9c4be;
+  background-image: url("/images/ukha/home-background.webp");
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
 .panopticon-page {
   background:
     radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.58), transparent 30rem),
@@ -153,9 +161,9 @@ button {
 }
 
 .panopticon-desktop-visual.is-muted {
-  filter: blur(12px);
-  opacity: 0.25;
-  transform: scale(0.92);
+  filter: blur(6px);
+  opacity: 0.52;
+  transform: scale(0.96);
 }
 
 .panopticon-desktop-visual.is-active {
