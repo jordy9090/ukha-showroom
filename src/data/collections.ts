@@ -45,7 +45,7 @@ export const collections: Collection[] = [
   {
     slug: "liminal",
     title: "LIMINAL",
-    handwrittenTitleImage: "",
+    handwrittenTitleImage: ukhaImage("liminal-title.png"),
     coverImage: ukhaImage("liminal-cover-transparent.png"),
     description:
       "LIMINAL explores time, space, and humanity within a world composed of points, lines, and planes. It begins with the thought that we are deeply three-dimensional, human beings constrained by space, yet able to sense something mental and metaphysical in another dimension: time. The jewelry takes form as irregular traces of this inner process, emerging through the drawing of geometric graphs.",
@@ -149,7 +149,7 @@ export const collections: Collection[] = [
   {
     slug: "collection-02",
     title: "PANOPTICON",
-    handwrittenTitleImage: "",
+    handwrittenTitleImage: ukhaImage("panopticon-title.png"),
     coverImage: ukhaImage("collection-02-cover.png"),
     description: "PANOPTICON reimagines the prison as a stage for everyday role-playing. Conscious of the gaze of others, we perform identities shaped by relationships and external conditions. Within this space of invisible surveillance, the collection imagines the characters who might inhabit each cell.",
     pieces: [

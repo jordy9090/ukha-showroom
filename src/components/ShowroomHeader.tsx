@@ -22,7 +22,7 @@ export function ShowroomHeader() {
       <Link
         href="/#home-menu"
         aria-label="menu"
-        className="group block outline-none"
+        className="group -my-[18px] flex py-[18px] outline-none"
       >
         <Image
           src="/images/ukha/nav-menu.png"
