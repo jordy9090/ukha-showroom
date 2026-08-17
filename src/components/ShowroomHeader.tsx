@@ -20,7 +20,7 @@ export function ShowroomHeader() {
         />
       </Link>
       <Link
-        href="/menu"
+        href="/#home-menu"
         aria-label="menu"
         className="group block outline-none"
       >

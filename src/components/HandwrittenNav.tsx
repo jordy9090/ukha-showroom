@@ -41,7 +41,7 @@ const navItems = [
     opacityClass: "opacity-[0.7]",
   },
   {
-    href: "/menu",
+    href: "/#home-menu",
     label: "menu",
     src: "/images/ukha/nav-menu.png",
     width: 1464,
