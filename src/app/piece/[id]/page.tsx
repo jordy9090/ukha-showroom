@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
 import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery";
-import { CopyEmail } from "@/components/CopyEmail";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { collections, getPiece } from "@/data/collections";
 
@@ -64,21 +64,12 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
             </section>
           </div>
 
-          <details className="group mt-7">
-            <summary className="ukha-note inline-flex cursor-pointer list-none border-b border-[var(--foreground)] pb-1 !text-[10px] transition hover:text-[var(--muted)] sm:!text-[11px] [&::-webkit-details-marker]:hidden">
-              INQUIRY
-            </summary>
-            <div className="ukha-note mt-5 flex flex-col items-start gap-2">
-              <CopyEmail className="cursor-pointer text-inherit" />
-              <a
-                href="https://www.instagram.com/ukha_studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                target="_blank"
-                rel="noreferrer"
-              >
-                @ukha_studio ↗
-              </a>
-            </div>
-          </details>
+          <Link
+            href={{ pathname: "/inquiry", query: { piece: piece.title } }}
+            className="ukha-note mt-7 inline-flex border-b border-[var(--foreground)] pb-1 !text-[10px] transition hover:text-[var(--muted)] sm:!text-[11px]"
+          >
+            INQUIRY
+          </Link>
         </aside>
       </FadeIn>
     </main>
