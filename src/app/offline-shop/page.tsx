@@ -3,7 +3,7 @@ import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { CopyEmail } from "@/components/CopyEmail";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { offlineShopImages, visitCopy } from "@/data/collections";
+import { offlineShopImages, studioVisitCopy, visitCopy } from "@/data/collections";
 
 export default function OfflineShopPage() {
   const visibleOfflineShopImages = offlineShopImages.filter(
@@ -14,7 +14,7 @@ export default function OfflineShopPage() {
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10">
       <ShowroomHeader />
       <FadeIn className="mx-auto max-w-6xl">
-        <section className="grid gap-10 pb-16 pt-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <section className="grid gap-10 pb-16 pt-10 lg:grid-cols-[auto_1fr]">
           <div>
             <Image
               src="/images/ukha/nav-visit.png"
@@ -26,9 +26,25 @@ export default function OfflineShopPage() {
               priority
             />
           </div>
-          <div className="ukha-note max-w-md space-y-6 leading-[2]">
+          <div className="ukha-note space-y-6 leading-[2]">
             {visitCopy.map((line) => (
               <p key={line} className="whitespace-pre-line break-keep">{line}</p>
+            ))}
+          </div>
+        </section>
+
+        <section className="pb-6">
+          <Image
+            src="/images/ukha/visit-studio-workbench.webp"
+            alt="UKHA studio workbench"
+            width={1448}
+            height={1086}
+            sizes="(max-width: 1152px) 92vw, 1088px"
+            className="h-auto w-full"
+          />
+          <div className="ukha-note mt-6 space-y-1 leading-[2]">
+            {studioVisitCopy.map((line) => (
+              <p key={line} className="break-keep">{line}</p>
             ))}
           </div>
         </section>

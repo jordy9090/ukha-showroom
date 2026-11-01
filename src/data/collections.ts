@@ -343,6 +343,12 @@ export const visitCopy = [
   "Pieces available for purchase from the collections, as well as pieces outside the collections, are listed under Wearable Line.\nPayment is available in Korea only. For international shipping, please contact us via Instagram DM or email.",
 ];
 
+// Shown under the studio photo on the Visit page.
+export const studioVisitCopy = [
+  "오프라인 스튜디오 방문은 DM 문의 부탁드립니다.",
+  "For offline studio visits, please contact us via Instagram DM.",
+];
+
 // Replace src values with future showroom/studio photos.
 export const offlineShopImages: ShowroomImage[] = [
   {
