@@ -14,6 +14,18 @@ type HandwrittenNavProps = {
 
 const navItems = [
   {
+    // Wider than the others: its thin, long handwriting needs this width for its
+    // lowercase letters to match "archive" and "visit".
+    href: "/wearable-line",
+    label: "wearable line",
+    src: "/images/ukha/collection-overlay-wearable-line.png",
+    width: 2164,
+    height: 339,
+    className: "w-[min(58vw,430px)]",
+    // Its thin strokes need more opacity than archive/visit to read as clearly.
+    opacityClass: "opacity-[0.88]",
+  },
+  {
     href: "/collection",
     label: "collection",
     src: "/images/ukha/nav-collection.png",
@@ -62,8 +74,13 @@ export function HandwrittenNav({
   const visibleItems = includeMenu
     ? navItems
     : navItems.filter((item) => !item.isMenu);
-  const collectionItem = visibleItems[0];
-  const secondaryItems = visibleItems.slice(1);
+  const collectionIndex = visibleItems.findIndex(
+    (item) => item.label === "collection",
+  );
+  const collectionItem = visibleItems[collectionIndex];
+  // Items above "collection" hide while its submenu is open; the rest swap with it.
+  const leadingItems = visibleItems.slice(0, collectionIndex);
+  const secondaryItems = visibleItems.slice(collectionIndex + 1);
 
   const imageClassName = (item: (typeof navItems)[number]) =>
     `${item.className} ${item.opacityClass} relative h-auto object-contain ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"} transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100`;
@@ -80,6 +97,38 @@ export function HandwrittenNav({
       aria-label="UKHA showroom navigation"
       className={`flex flex-col items-center ${expandCollections ? "gap-9 sm:gap-11" : "gap-5 sm:gap-6"} ${className}`}
     >
+      {/* Items above "collection" (Wearable Line) step aside while its submenu is open. */}
+      <AnimatePresence initial={false}>
+        {expandCollections && !collectionsOpen
+          ? leadingItems.map((item) => (
+              <motion.div
+                layout
+                key={item.href}
+                initial={{ opacity: 0, y: -10, filter: "blur(3px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -10, filter: "blur(3px)" }}
+                transition={menuTransition}
+                className="mb-3 sm:mb-5"
+              >
+                <Link
+                  href={item.href}
+                  aria-label={item.label}
+                  className="group relative block max-w-[92vw] outline-none transition duration-500 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+                >
+                  <Image
+                    src={item.src}
+                    alt=""
+                    width={item.width}
+                    height={item.height}
+                    sizes="(max-width: 640px) 48vw, 360px"
+                    className={imageClassName(item)}
+                  />
+                </Link>
+              </motion.div>
+            ))
+          : null}
+      </AnimatePresence>
+
       {expandCollections ? (
         <motion.button
           layout
@@ -111,20 +160,6 @@ export function HandwrittenNav({
             transition={menuTransition}
             className="flex flex-col items-center gap-4 sm:gap-5"
           >
-            <Link
-              href="/wearable-line"
-              aria-label="WEARABLE LINE"
-              className="group mb-3.5 block max-w-[92vw] outline-none transition duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-            >
-              <Image
-                src="/images/ukha/collection-overlay-wearable-line.png"
-                alt=""
-                width={2164}
-                height={339}
-                sizes="(max-width: 640px) 62vw, 390px"
-                className={`h-auto w-[min(62vw,390px)] object-contain opacity-75 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"}`}
-              />
-            </Link>
             {[
               {
                 href: "/collection/collection-02",
