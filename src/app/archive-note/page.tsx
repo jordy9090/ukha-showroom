@@ -45,7 +45,7 @@ export default function ArchiveNotePage() {
           </div>
         </section>
 
-        <section className="flex flex-col items-center pb-24 pt-12 text-center sm:pb-32 sm:pt-20">
+        <section className="flex flex-col items-center -mt-10 pb-24 pt-0 text-center sm:mt-0 sm:pb-32 sm:pt-3">
           <h1 className="mb-8 text-[11px] font-normal tracking-[0.18em] text-[var(--muted)] sm:mb-10 sm:text-xs">
             2026 Milano Jewelry Week - Gallery Award
           </h1>

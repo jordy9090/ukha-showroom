@@ -39,10 +39,10 @@ export default function OfflineShopPage() {
             alt="UKHA studio workbench"
             width={1448}
             height={1086}
-            sizes="(max-width: 1152px) 92vw, 1088px"
-            className="h-auto w-full"
+            sizes="(max-width: 1152px) 46vw, 544px"
+            className="mx-auto h-auto w-1/2"
           />
-          <div className="ukha-note mt-6 space-y-1 leading-[2]">
+          <div className="ukha-note mt-6 space-y-1 text-center leading-[2]">
             {studioVisitCopy.map((line) => (
               <p key={line} className="break-keep">{line}</p>
             ))}
