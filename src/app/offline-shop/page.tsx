@@ -3,8 +3,7 @@ import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { CopyEmail } from "@/components/CopyEmail";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { offlineShopImages, visitCopy, visitCopyBeforeShop } from "@/data/collections";
-import { SHOP_ENABLED } from "@/data/wearable";
+import { offlineShopImages, visitCopy } from "@/data/collections";
 
 export default function OfflineShopPage() {
   const visibleOfflineShopImages = offlineShopImages.filter(
@@ -28,7 +27,7 @@ export default function OfflineShopPage() {
             />
           </div>
           <div className="ukha-note max-w-md space-y-6 leading-[2]">
-            {(SHOP_ENABLED ? visitCopy : visitCopyBeforeShop).map((line) => (
+            {visitCopy.map((line) => (
               <p key={line} className="whitespace-pre-line break-keep">{line}</p>
             ))}
           </div>
