@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
 import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
@@ -64,12 +63,6 @@ export default async function PieceDetailPage(props: PageProps<"/piece/[id]">) {
             </section>
           </div>
 
-          <Link
-            href={{ pathname: "/inquiry", query: { piece: piece.title } }}
-            className="ukha-note mt-7 inline-flex border-b border-[var(--foreground)] pb-1 !text-[10px] transition hover:text-[var(--muted)] sm:!text-[11px]"
-          >
-            INQUIRY
-          </Link>
         </aside>
       </FadeIn>
     </main>

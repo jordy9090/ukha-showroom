@@ -1,44 +1,8 @@
 import Image from "next/image";
-import { ArtworkFrame } from "@/components/ArtworkFrame";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { archiveNotes } from "@/data/collections";
-
-const archivePlacements = [
-  "left-[4%] top-[14%] z-10 h-[30%] w-[25%] opacity-[0.65]",
-  "left-[31%] top-[1%] z-30 h-[25%] w-[14%] opacity-90",
-  "right-[6%] top-[5%] z-20 h-[24%] w-[20%] opacity-75",
-  "left-[12%] top-[36%] z-30 h-[41%] w-[22%] opacity-90",
-  "left-[2%] top-[66%] z-10 h-[32%] w-[28%] opacity-[0.65]",
-  "left-[30%] top-[24%] z-10 h-[45%] w-[42%] opacity-70",
-  "right-[3%] top-[29%] z-20 h-[34%] w-[30%] opacity-80",
-  "left-[35%] top-[64%] z-30 h-[30%] w-[24%] opacity-90",
-  "right-[2%] top-[61%] z-20 h-[38%] w-[37%] opacity-[0.72]",
-];
-
-const archiveOpacities = [
-  "opacity-[0.65]",
-  "opacity-90",
-  "opacity-75",
-  "opacity-90",
-  "opacity-[0.65]",
-  "opacity-70",
-  "opacity-80",
-  "opacity-90",
-  "opacity-[0.72]",
-];
 
 export default function ArchiveNotePage() {
-  const visibleArchiveNotes = archiveNotes.filter((note) => note.src).reverse();
-  const archivePages = Array.from(
-    { length: Math.ceil(visibleArchiveNotes.length / archivePlacements.length) },
-    (_, pageIndex) =>
-      visibleArchiveNotes.slice(
-        pageIndex * archivePlacements.length,
-        (pageIndex + 1) * archivePlacements.length,
-      ),
-  );
-
   return (
     <main className="ukha-page min-h-screen px-6 py-28 sm:px-10 sm:py-0">
       <ShowroomHeader />
@@ -55,58 +19,46 @@ export default function ArchiveNotePage() {
           />
         </section>
 
-        <section
-          aria-hidden="true"
-          className="hidden"
-        >
-          {visibleArchiveNotes.map((note, index) => (
-            <div
-              key={note.id}
-              className={`relative shrink-0 snap-center ${archiveOpacities[index % archiveOpacities.length]} ${note.aspect === "portrait" ? "w-[21.6svh]" : "w-[36svh]"}`}
-            >
-              <ArtworkFrame
-                src={note.src}
-                alt={note.title}
-                label={`${note.title} placeholder`}
-                className="archive-grain h-[27svh]"
-                fit="contain"
-                framed={false}
-                priority={index === 0}
-                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 48vw, 92vw"
-              />
-            </div>
-          ))}
+        <section className="flex min-h-[calc(100vh-7rem)] flex-col items-center justify-center pb-12 pt-8 text-center sm:min-h-screen sm:pb-16 sm:pt-28">
+          <h1 className="mb-8 text-[11px] font-normal tracking-[0.18em] text-[var(--muted)] sm:mb-10 sm:text-xs">
+            2026 Seoul pop-up
+          </h1>
+          <div className="flex items-center justify-center gap-3 sm:gap-6">
+            <Image
+              src="/images/ukha/archive-seoul-popup-2026-01.jpg"
+              alt="2026 Seoul pop-up view 1"
+              width={2400}
+              height={1800}
+              sizes="(max-width: 640px) 58vw, 720px"
+              className="h-[min(44vw,540px)] w-auto object-contain"
+              priority
+            />
+            <Image
+              src="/images/ukha/archive-seoul-popup-2026-02.jpg"
+              alt="2026 Seoul pop-up view 2"
+              width={1800}
+              height={2400}
+              sizes="(max-width: 640px) 33vw, 405px"
+              className="h-[min(44vw,540px)] w-auto object-contain"
+              priority
+            />
+          </div>
         </section>
 
-        <section
-          aria-hidden="true"
-          className="hidden"
-        >
-          {archivePages.map((page, pageIndex) => (
-            <div
-              key={`archive-page-${pageIndex}`}
-              className="relative h-full w-[calc(100vw-5rem)] shrink-0 snap-start"
-            >
-              {page.map((note, index) => (
-                <div
-                  key={note.id}
-                  className={`absolute ${archivePlacements[index]}`}
-                >
-                  <ArtworkFrame
-                    src={note.src}
-                    alt={note.title}
-                    label={`${note.title} placeholder`}
-                    className="archive-grain h-full"
-                    fit="contain"
-                    framed={false}
-                    priority={pageIndex === 0 && index === 0}
-                    sizes="(min-width: 1024px) 42vw, 48vw"
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
+        <section className="flex flex-col items-center pb-24 pt-12 text-center sm:pb-32 sm:pt-20">
+          <h1 className="mb-8 text-[11px] font-normal tracking-[0.18em] text-[var(--muted)] sm:mb-10 sm:text-xs">
+            2026 Milano Jewelry Week - Gallery Award
+          </h1>
+          <Image
+            src="/images/ukha/archive-milano-jewelry-week-2026.jpg"
+            alt="2026 Milano Jewelry Week Gallery Award"
+            width={2000}
+            height={1500}
+            sizes="(max-width: 640px) 58vw, 720px"
+            className="h-[min(44vw,540px)] w-auto object-contain"
+          />
         </section>
+
       </FadeIn>
     </main>
   );
