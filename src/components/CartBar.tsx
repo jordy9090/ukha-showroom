@@ -6,7 +6,8 @@ import { cartCount, useCart } from "@/lib/cart";
 
 // Cart tab pinned to the bottom of the Wearable Line pages, visible even when empty.
 export function CartBar() {
-  const items = useCart();
+  // Ignore lines for pieces that are no longer in the catalogue.
+  const items = useCart().filter((item) => getWearableProduct(item.productId));
   const count = cartCount(items);
   const subtotal = items.reduce(
     (sum, item) => sum + (getWearableProduct(item.productId)?.price ?? 0) * item.quantity,

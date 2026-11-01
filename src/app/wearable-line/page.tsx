@@ -4,7 +4,7 @@ import { CartBar } from "@/components/CartBar";
 import { FadeIn } from "@/components/FadeIn";
 import { ShopFooter } from "@/components/ShopFooter";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { formatKRW, wearableProducts } from "@/data/wearable";
+import { formatPrice, PURCHASE_ENABLED, wearableProducts } from "@/data/wearable";
 
 export const metadata = {
   title: "Wearable Line — UKHA studio",
@@ -45,7 +45,7 @@ export default function WearableLinePage() {
                   {product.title}
                 </p>
                 <p className="ukha-note mt-2 text-[var(--muted)]">
-                  {formatKRW(product.price)}
+                  {formatPrice(product.price)}
                   {product.madeToOrderWeeks ? " · Made to order" : ""}
                 </p>
               </Link>
@@ -55,7 +55,7 @@ export default function WearableLinePage() {
 
         <ShopFooter />
       </FadeIn>
-      <CartBar />
+      {PURCHASE_ENABLED ? <CartBar /> : null}
     </main>
   );
 }

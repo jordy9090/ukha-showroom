@@ -27,9 +27,9 @@ export function CartView() {
     index,
     product: getWearableProduct(item.productId),
   }));
-  const available = lines.filter((line) => line.product);
+  const available = lines.filter((line) => line.product && line.product.price !== null);
   const subtotal = available.reduce(
-    (sum, line) => sum + line.product!.price * line.item.quantity,
+    (sum, line) => sum + (line.product!.price ?? 0) * line.item.quantity,
     0,
   );
 
@@ -57,7 +57,7 @@ export function CartView() {
     <div className="grid gap-14 lg:grid-cols-[1.3fr_0.7fr] lg:gap-20">
       <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
         {lines.map(({ item, index, product }) => (
-          <li key={`${item.productId}-${item.size}-${index}`} className="flex gap-5 py-6">
+          <li key={`${item.productId}-${item.size}-${item.word}-${index}`} className="flex gap-5 py-6">
             {product ? (
               <Link href={`/wearable-line/${product.id}`} className="flex-none">
                 <Image
@@ -76,7 +76,7 @@ export function CartView() {
             <div className="flex min-w-0 flex-1 flex-col justify-between gap-3">
               <div className="ukha-note leading-5">
                 <p className="text-[var(--foreground)]!">
-                  {product ? itemLabel(product, item.size) : "This piece is no longer available"}
+                  {product ? itemLabel(product, item.size, item.word) : "This piece is no longer available"}
                 </p>
                 {product?.madeToOrderWeeks ? (
                   <p>Made to order · ships in about {product.madeToOrderWeeks} weeks</p>
@@ -108,7 +108,7 @@ export function CartView() {
 
                 <div className="flex items-center gap-5">
                   {product ? (
-                    <span className="ukha-note">{formatKRW(product.price * item.quantity)}</span>
+                    <span className="ukha-note">{formatKRW((product.price ?? 0) * item.quantity)}</span>
                   ) : null}
                   <button
                     type="button"

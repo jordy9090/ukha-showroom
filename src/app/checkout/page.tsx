@@ -36,6 +36,7 @@ export default async function CheckoutPage(props: PageProps<"/checkout">) {
                     productId: line.product.id,
                     size: line.size,
                     quantity: line.quantity,
+                    word: line.word,
                   }))}
                   total={order.total}
                 />
@@ -48,7 +49,7 @@ export default async function CheckoutPage(props: PageProps<"/checkout">) {
               <h1 className="ukha-piece-title mb-6 text-[12px]">ORDER</h1>
               <ul className="space-y-5">
                 {order.items.map((line) => (
-                  <li key={`${line.product.id}-${line.size}`} className="flex gap-4">
+                  <li key={`${line.product.id}-${line.size}-${line.word}`} className="flex gap-4">
                     <Image
                       src={line.product.images[0]}
                       alt=""
@@ -58,7 +59,7 @@ export default async function CheckoutPage(props: PageProps<"/checkout">) {
                       className="h-20 w-20 flex-none object-cover"
                     />
                     <div className="ukha-note min-w-0 flex-1 space-y-1 leading-5">
-                      <p>{itemLabel(line.product, line.size)}</p>
+                      <p>{itemLabel(line.product, line.size, line.word)}</p>
                       <p className="text-[var(--muted)]">
                         Qty {line.quantity} · {formatKRW(line.lineTotal)}
                       </p>

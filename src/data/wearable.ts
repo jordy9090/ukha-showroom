@@ -1,57 +1,140 @@
 // Wearable Line products that can be bought online.
 // This file is imported by client components, so keep it free of Node APIs.
-// Prices are in KRW. Replace the temporary entries with the real line-up.
+// Prices are in KRW.
 
-// Online shop switch. Off unless NEXT_PUBLIC_SHOP_ENABLED=true, so the live site
-// keeps Wearable Line, cart and checkout hidden until payments are approved.
-export const SHOP_ENABLED = process.env.NEXT_PUBLIC_SHOP_ENABLED === "true";
+// Buying switch. Wearable Line pages are always public; buttons, cart, checkout and
+// the payment API only work when NEXT_PUBLIC_SHOP_ENABLED=true (after Toss approval).
+export const PURCHASE_ENABLED = process.env.NEXT_PUBLIC_SHOP_ENABLED === "true";
 
 export type WearableProduct = {
   id: string;
   title: string;
   material: string;
   description: string;
-  price: number;
+  // KRW. null until the price is decided; the piece is then shown but not purchasable.
+  price: number | null;
   images: string[];
+  // Fit shown on the product page, in Korean ring sizes (호).
+  sizeLabel: string;
   // Ring sizes (Korean 호) the buyer must choose from. Omit for one-size pieces.
   ringSizes?: number[];
   // Made-to-order pieces: approximate weeks from payment to shipping.
   madeToOrderWeeks?: number;
+  // Buyer can keep the original design or have one custom word cut into the piece.
+  customWord?: { maxLength: number };
 };
 
 export const SHIPPING_FEE = 3000;
 export const MAX_QUANTITY = 5;
 
-const STANDARD_RING_SIZES = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+// Sizes from "selected for BENDHAUS" (US) converted to Korean sizes:
+// US 3 = 4호, US 4 = 7호, US 5 = 9호, US 6 = 11–12호.
+// Korean ring sizes offered for pieces made to the buyer's size.
+const RING_SIZE_OPTIONS = Array.from({ length: 16 }, (_, index) => index + 5); // 5–20호
 
 export const wearableProducts: WearableProduct[] = [
   {
-    id: "wearable-ring-01",
-    title: "WEARABLE LINE: RING 01",
+    id: "flock-necklace",
+    title: "FLOCK NECKLACE",
     material: "Brass",
-    description: "Hand-textured brass band, linked ring set.",
-    price: 130000,
-    images: ["/images/ukha/wearable-line-01.jpg"],
-    ringSizes: STANDARD_RING_SIZES,
+    description: "",
+    price: 79_000,
+    images: ["/images/ukha/flock-necklace-02.jpg", "/images/ukha/flock-necklace-01.jpg"],
+    sizeLabel: "One size",
     madeToOrderWeeks: 2,
   },
   {
-    id: "wearable-ring-02",
-    title: "WEARABLE LINE: RING 02",
+    id: "totem-ring",
+    title: "TOTEM RING",
     material: "Brass",
-    description: "Sculptural brass ring with layered plates.",
-    price: 180000,
-    images: ["/images/ukha/wearable-line-02.jpg"],
-    ringSizes: STANDARD_RING_SIZES,
+    description: "",
+    price: 130_000,
+    images: ["/images/ukha/totem-ring-02.jpg", "/images/ukha/totem-ring-01.jpg"],
+    sizeLabel: "One size",
+    madeToOrderWeeks: 2,
+    customWord: { maxLength: 10 },
+  },
+  {
+    id: "liminal-01",
+    title: "LIMINAL: 01",
+    material: "Brass",
+    description: "",
+    price: 320_000,
+    images: ["/images/ukha/liminal-piece-01-cover.jpg"],
+    sizeLabel: "Open ring (adjustable)",
+    ringSizes: RING_SIZE_OPTIONS,
     madeToOrderWeeks: 2,
   },
   {
-    id: "wearable-cuff-01",
-    title: "WEARABLE LINE: CUFF",
+    id: "liminal-03",
+    title: "LIMINAL: 03",
     material: "Brass",
-    description: "Open brass cuff. One size.",
-    price: 220000,
-    images: ["/images/ukha/wearable-line-03.jpg"],
+    description: "",
+    price: 280_000,
+    images: [
+      "/images/ukha/liminal-piece-03-cover.jpg",
+      "/images/ukha/liminal-piece-03-detail-01.jpg",
+      "/images/ukha/liminal-piece-03-detail-02.jpg",
+    ],
+    sizeLabel: "One size · middle joint 4–7호",
+    madeToOrderWeeks: 2,
+  },
+  {
+    id: "liminal-05",
+    title: "LIMINAL: 05",
+    material: "Brass",
+    description: "",
+    price: 280_000,
+    images: [
+      "/images/ukha/liminal-piece-05-cover.jpg",
+      "/images/ukha/liminal-piece-05-detail-01.jpg",
+    ],
+    sizeLabel: "Open ring (adjustable)",
+    ringSizes: RING_SIZE_OPTIONS,
+    madeToOrderWeeks: 2,
+  },
+  {
+    id: "panopticon-05",
+    title: "PANOPTICON: 05",
+    material: "Brass",
+    description: "Is isolation ever complete?",
+    price: 280_000,
+    images: [
+      "/images/ukha/collection-02-piece-02-cover.jpg",
+      "/images/ukha/collection-02-piece-02-detail-01.jpg",
+      "/images/ukha/collection-02-piece-02-detail-02.jpg",
+      "/images/ukha/collection-02-piece-02-detail-03.jpg",
+    ],
+    sizeLabel: "9–12호",
+    madeToOrderWeeks: 2,
+  },
+  {
+    id: "panopticon-07",
+    title: "PANOPTICON: 07",
+    material: "Brass",
+    description: "Can resistance be contained?",
+    price: 260_000,
+    images: [
+      "/images/ukha/collection-02-piece-04-cover.jpg",
+      "/images/ukha/collection-02-piece-04-detail-01.jpg",
+      "/images/ukha/collection-02-piece-04-detail-02.jpg",
+      "/images/ukha/collection-02-piece-04-detail-03.jpg",
+    ],
+    sizeLabel: "One size · middle joint 7–9호",
+    madeToOrderWeeks: 2,
+  },
+  {
+    id: "panopticon-08",
+    title: "PANOPTICON: 08",
+    material: "Brass",
+    description: "When does repetition become instinct?",
+    price: 220_000,
+    images: [
+      "/images/ukha/collection-02-piece-08-cover.jpg",
+      "/images/ukha/collection-02-piece-08-detail.jpg",
+    ],
+    sizeLabel: "Open ring (adjustable)",
+    ringSizes: RING_SIZE_OPTIONS,
     madeToOrderWeeks: 2,
   },
 ];
@@ -108,18 +191,46 @@ export function formatKRW(value: number) {
   return `KRW ${value.toLocaleString("en-US")}`;
 }
 
+export function formatPrice(price: number | null) {
+  return price === null ? "Coming soon" : formatKRW(price);
+}
+
 export type OrderSelection = {
   productId: string;
   size: number | null;
   quantity: number;
+  // Custom word for pieces with `customWord`; null (or missing) means the original design.
+  word?: string | null;
 };
+
+// One word only: letters (any language) and numbers, no spaces or symbols.
+const WORD_PATTERN = /^[\p{L}\p{N}]+$/u;
+
+// Returns an error message for an invalid custom word, or null when it is fine.
+export function customWordError(word: string, maxLength: number) {
+  if (!word) {
+    return "Please enter a word.";
+  }
+
+  if (!WORD_PATTERN.test(word)) {
+    return "One word only: letters or numbers, no spaces or symbols.";
+  }
+
+  if ([...word].length > maxLength) {
+    return `Up to ${maxLength} characters.`;
+  }
+
+  return null;
+}
 
 export const MAX_CART_LINES = 10;
 
-// Order lines travel between pages as "productId:size:quantity" joined by commas,
-// e.g. "wearable-ring-01:13:1,wearable-cuff-01::2". No personal data is included.
+// Order lines travel between pages as "productId:size:quantity:word" joined by commas,
+// e.g. "liminal-01:13:1:,totem-ring::1:LOVE". Words never contain ":" or ",".
 export function encodeOrderItems(items: OrderSelection[]) {
-  return items.map((item) => `${item.productId}:${item.size ?? ""}:${item.quantity}`).join(",");
+  return items
+    .map((item) => `${item.productId}:${item.size ?? ""}:${item.quantity}:${item.word ?? ""}`)
+    .join(",");
 }
 
 export function decodeOrderItems(value: string | undefined | null): OrderSelection[] {
@@ -128,26 +239,50 @@ export function decodeOrderItems(value: string | undefined | null): OrderSelecti
   }
 
   return value.split(",").map((part) => {
-    const [productId = "", size = "", quantity = ""] = part.split(":");
+    const [productId = "", size = "", quantity = "", word = ""] = part.split(":");
 
-    return { productId, size: size === "" ? null : Number(size), quantity: Number(quantity) };
+    return {
+      productId,
+      size: size === "" ? null : Number(size),
+      quantity: Number(quantity),
+      word: word === "" ? null : word,
+    };
   });
 }
 
-export function itemLabel(product: WearableProduct, size: number | null) {
-  return size === null ? product.title : `${product.title} / size ${size}`;
+export function itemLabel(product: WearableProduct, size: number | null, word?: string | null) {
+  const parts = [product.title];
+
+  if (size !== null) {
+    parts.push(`size ${size}`);
+  }
+
+  if (product.customWord) {
+    parts.push(word ? `word "${word}"` : "original design");
+  }
+
+  return parts.join(" / ");
 }
 
 function priceLine(selection: OrderSelection) {
   const product = getWearableProduct(selection.productId);
 
-  if (!product) {
+  if (!product || product.price === null) {
     return null;
   }
 
   const { quantity, size } = selection;
+  const word = selection.word ?? null;
 
   if (!Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY) {
+    return null;
+  }
+
+  if (product.customWord) {
+    if (word !== null && customWordError(word, product.customWord.maxLength)) {
+      return null;
+    }
+  } else if (word !== null) {
     return null;
   }
 
@@ -159,7 +294,7 @@ function priceLine(selection: OrderSelection) {
     return null;
   }
 
-  return { product, size, quantity, lineTotal: product.price * quantity };
+  return { product, size, quantity, word, lineTotal: product.price * quantity };
 }
 
 // Validates every line against the catalogue and returns the priced order,
@@ -179,7 +314,7 @@ export function priceOrder(selections: OrderSelection[]) {
   const subtotal = items.reduce((sum, line) => sum + line.lineTotal, 0);
   const total = subtotal + SHIPPING_FEE;
   const first = items[0];
-  const firstLabel = `${itemLabel(first.product, first.size)}${first.quantity > 1 ? ` x${first.quantity}` : ""}`;
+  const firstLabel = `${itemLabel(first.product, first.size, first.word)}${first.quantity > 1 ? ` x${first.quantity}` : ""}`;
   // Toss shows this on the payment screen, e.g. "WEARABLE LINE: RING 01 / size 13 외 1건".
   const orderName = (items.length > 1 ? `${firstLabel} 외 ${items.length - 1}건` : firstLabel).slice(0, 100);
 

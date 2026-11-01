@@ -73,12 +73,15 @@ export function cartCount(items: OrderSelection[]) {
   return items.reduce((sum, item) => sum + item.quantity, 0);
 }
 
-// Adds a line, merging with an existing line for the same piece and size.
+// Adds a line, merging with an existing line for the same piece, size and word.
 // Returns false when the cart is full.
 export function addToCart(item: OrderSelection) {
   const items = getSnapshot();
   const index = items.findIndex(
-    (line) => line.productId === item.productId && line.size === item.size,
+    (line) =>
+      line.productId === item.productId &&
+      line.size === item.size &&
+      (line.word ?? null) === (item.word ?? null),
   );
 
   if (index >= 0) {

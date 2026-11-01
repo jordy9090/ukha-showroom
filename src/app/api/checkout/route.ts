@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { formatKRW, itemLabel, MAX_CART_LINES, priceOrder, SHOP_ENABLED } from "@/data/wearable";
+import { formatKRW, itemLabel, MAX_CART_LINES, priceOrder, PURCHASE_ENABLED } from "@/data/wearable";
 import {
   createOrderId,
   PENDING_ORDER_COOKIE,
@@ -46,7 +46,7 @@ function readCustomer(input: unknown): Customer | null {
 }
 
 export async function POST(request: Request) {
-  if (!SHOP_ENABLED) {
+  if (!PURCHASE_ENABLED) {
     return new Response(null, { status: 404 });
   }
 
@@ -61,6 +61,7 @@ export async function POST(request: Request) {
         productId: String(item.productId ?? ""),
         size: item.size === null || item.size === undefined ? null : Number(item.size),
         quantity: Number(item.quantity),
+        word: typeof item.word === "string" && item.word !== "" ? item.word : null,
       };
     }),
   );
@@ -86,9 +87,10 @@ export async function POST(request: Request) {
         productId: line.product.id,
         size: line.size,
         quantity: line.quantity,
+        word: line.word,
       })),
       itemSummaries: priced.items.map(
-        (line) => `${itemLabel(line.product, line.size)} x${line.quantity} — ${formatKRW(line.lineTotal)}`,
+        (line) => `${itemLabel(line.product, line.size, line.word)} x${line.quantity} — ${formatKRW(line.lineTotal)}`,
       ),
       subtotal: priced.subtotal,
       shipping: priced.shipping,

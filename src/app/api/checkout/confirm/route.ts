@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { SHOP_ENABLED } from "@/data/wearable";
+import { PURCHASE_ENABLED } from "@/data/wearable";
 import {
   confirmTossPayment,
   notifyNewOrder,
@@ -11,7 +11,7 @@ import {
 // Toss redirects here (successUrl) after the buyer authorises the payment.
 // The payment is only final once this handler confirms it with the secret key.
 export async function GET(request: Request) {
-  if (!SHOP_ENABLED) {
+  if (!PURCHASE_ENABLED) {
     return new Response(null, { status: 404 });
   }
 

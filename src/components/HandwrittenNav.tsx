@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { SHOP_ENABLED } from "@/data/wearable";
 
 type HandwrittenNavProps = {
   className?: string;
@@ -112,22 +111,20 @@ export function HandwrittenNav({
             transition={menuTransition}
             className="flex flex-col items-center gap-4 sm:gap-5"
           >
-            {SHOP_ENABLED ? (
-              <Link
-                href="/wearable-line"
-                aria-label="WEARABLE LINE"
-                className="group mb-3.5 block max-w-[92vw] outline-none transition duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-              >
-                <Image
-                  src="/images/ukha/collection-overlay-wearable-line.png"
-                  alt=""
-                  width={2164}
-                  height={339}
-                  sizes="(max-width: 640px) 62vw, 390px"
-                  className={`h-auto w-[min(62vw,390px)] object-contain opacity-75 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"}`}
-                />
-              </Link>
-            ) : null}
+            <Link
+              href="/wearable-line"
+              aria-label="WEARABLE LINE"
+              className="group mb-3.5 block max-w-[92vw] outline-none transition duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+            >
+              <Image
+                src="/images/ukha/collection-overlay-wearable-line.png"
+                alt=""
+                width={2164}
+                height={339}
+                sizes="(max-width: 640px) 62vw, 390px"
+                className={`h-auto w-[min(62vw,390px)] object-contain opacity-75 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"}`}
+              />
+            </Link>
             {[
               {
                 href: "/collection/collection-02",
