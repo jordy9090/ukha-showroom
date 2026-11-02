@@ -31,14 +31,15 @@ export default function WearableLinePage() {
           {wearableProducts.map((product) => (
             <li key={product.id}>
               <Link href={`/wearable-line/${product.id}`} className="group block outline-none">
-                <div className="aspect-square overflow-hidden bg-[var(--paper)]">
+                {/* 3:2 like the landscape product photos, so they show uncropped; other ratios fit inside. */}
+                <div className="aspect-[3/2] overflow-hidden">
                   <Image
                     src={product.images[0]}
                     alt={product.title}
-                    width={1600}
-                    height={1600}
+                    width={2000}
+                    height={1333}
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 360px"
-                    className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100 group-focus-visible:opacity-100"
+                    className="h-full w-full object-contain opacity-90 transition duration-500 group-hover:scale-[1.02] group-hover:opacity-100 group-focus-visible:opacity-100"
                   />
                 </div>
                 <p className="ukha-piece-title mt-5 text-[12px] transition duration-300 group-hover:-translate-y-0.5">
