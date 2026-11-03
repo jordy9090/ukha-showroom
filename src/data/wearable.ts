@@ -91,7 +91,7 @@ export const wearableProducts: WearableProduct[] = [
     title: "LIMINAL: 01",
     material: "Brass",
     description: "",
-    price: 320_000,
+    price: 650_000,
     images: [
       "/images/ukha/liminal-01-01.jpg",
       "/images/ukha/liminal-01-02.jpg",
@@ -110,7 +110,7 @@ export const wearableProducts: WearableProduct[] = [
     title: "LIMINAL: 03",
     material: "Brass",
     description: "",
-    price: 280_000,
+    price: 540_000,
     images: [
       "/images/ukha/liminal-03-01.jpg",
       "/images/ukha/liminal-03-02.jpg",
@@ -127,7 +127,7 @@ export const wearableProducts: WearableProduct[] = [
     title: "LIMINAL: 05",
     material: "Brass",
     description: "",
-    price: 280_000,
+    price: 540_000,
     images: [
       "/images/ukha/liminal-05-01.jpg",
       "/images/ukha/liminal-05-02.jpg",
@@ -145,7 +145,7 @@ export const wearableProducts: WearableProduct[] = [
     title: "PANOPTICON: 05",
     material: "Brass",
     description: "Is isolation ever complete?",
-    price: 280_000,
+    price: 540_000,
     images: [
       "/images/ukha/panopticon-05-01.jpg",
       "/images/ukha/panopticon-05-02.jpg",
@@ -163,7 +163,7 @@ export const wearableProducts: WearableProduct[] = [
     title: "PANOPTICON: 07",
     material: "Brass",
     description: "Can resistance be contained?",
-    price: 260_000,
+    price: 540_000,
     images: [
       "/images/ukha/panopticon-07-01.jpg",
       "/images/ukha/panopticon-07-02.jpg",
