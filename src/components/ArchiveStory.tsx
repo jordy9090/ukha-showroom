@@ -57,6 +57,9 @@ export function ArchiveStory() {
   // neighbours step aside by just as much as it grows.
   const [sizes, setSizes] = useState<{ width: number; height: number }[]>([]);
   const titleRefs = useRef<(HTMLLIElement | null)[]>([]);
+  // Inner width of the title column, the most an enlarged title may take.
+  const [columnWidth, setColumnWidth] = useState(0);
+  const columnRef = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
@@ -71,10 +74,16 @@ export function ArchiveStory() {
   useEffect(() => {
     const query = window.matchMedia("(min-width: 640px)");
     const update = () => setWide(query.matches);
-    const measure = () =>
+    const measure = () => {
       setSizes(
         titleRefs.current.map((el) => ({ width: el?.offsetWidth ?? 0, height: el?.offsetHeight ?? 0 })),
       );
+      const column = columnRef.current;
+      if (column) {
+        const style = getComputedStyle(column);
+        setColumnWidth(column.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight));
+      }
+    };
     update();
     measure();
     query.addEventListener("change", update);
@@ -86,9 +95,10 @@ export function ArchiveStory() {
   }, []);
 
   const enlarged = (index: number) => {
-    const target = wide ? 2 : 1.45;
+    const target = wide ? 1.6 : 1.35;
     const width = sizes[index]?.width;
-    return width ? Math.min(target, (window.innerWidth * 0.9) / width) : target;
+    // Grows from its left edge and stays inside the title column.
+    return width && columnWidth ? Math.min(target, columnWidth / width) : 1;
   };
 
   const activeShow = step >= 0 ? step : null;
@@ -106,29 +116,12 @@ export function ArchiveStory() {
 
   return (
     <section ref={ref} style={{ height: `${100 + TOTAL_SCROLL}svh` }} className="relative -mx-6 sm:-mx-10">
-      <div className="sticky top-0 h-svh overflow-hidden bg-black">
-        {/* The active show's photos in a row across the middle; swipe, trackpad or drag to see the rest. */}
-        {shows.map((show, index) => {
-          const active = index === step;
-          return (
-            <motion.div
-              key={show.title}
-              initial={false}
-              animate={{
-                opacity: active ? 1 : 0,
-                scale: active ? 1 : 1.06,
-                filter: active ? "blur(0px)" : "blur(14px)",
-              }}
-              transition={{ duration: duration * 1.1, ease }}
-              className={`absolute inset-0 flex items-center ${active ? "" : "pointer-events-none"}`}
-            >
-              <PhotoRow show={show} eager={index === 0} />
-            </motion.div>
-          );
-        })}
-
+      {/* Split 3:7 so titles and photos never overlap: titles left and photos right on wider
+          screens; on phones titles on top and photos below. */}
+      <div className="sticky top-0 flex h-svh flex-col overflow-hidden bg-black sm:flex-row">
         <ol
-          className={`pointer-events-none relative flex h-full flex-col items-center justify-center gap-6 px-6 text-center text-white sm:gap-8 ${step >= 0 ? "[&_button]:pointer-events-none!" : ""}`}
+          ref={columnRef}
+          className="relative flex basis-[30%] flex-col items-start sm:min-w-[15rem] justify-end gap-4 px-6 pb-2 text-left text-white sm:justify-center sm:gap-6 sm:pb-0 sm:pl-10 sm:pr-6"
         >
           {shows.map((show, index) => {
             const isActive = activeShow === index;
@@ -151,14 +144,14 @@ export function ArchiveStory() {
                   filter: side === 0 ? "blur(0px)" : "blur(2.5px)",
                 }}
                 transition={{ duration, ease }}
-                className="relative"
+                className="relative origin-left"
               >
                 <button
                   type="button"
                   onClick={() => goTo(index)}
-                  className="pointer-events-auto max-w-[88vw] cursor-pointer text-balance text-[clamp(1rem,2.6vw,2rem)] font-normal uppercase leading-[1.35] tracking-[0.18em] outline-none sm:max-w-none sm:whitespace-nowrap"
+                  className="cursor-pointer text-left text-balance text-[clamp(0.8rem,3.6vw,1rem)] font-normal uppercase leading-[1.4] tracking-[0.16em] outline-none sm:text-[clamp(0.8rem,1.3vw,1.25rem)]"
                 >
-                  {/* Year, title and note run on one line. */}
+                  {/* Year, title and note run on together, wrapping only to fit the column. */}
                   {show.year} {show.title}
                   {show.note ? ` — ${show.note}` : null}
                 </button>
@@ -166,6 +159,28 @@ export function ArchiveStory() {
             );
           })}
         </ol>
+
+        {/* The active show's photos in a row; swipe, trackpad or drag to see the rest. */}
+        <div className="relative basis-[70%]">
+          {shows.map((show, index) => {
+            const active = index === step;
+            return (
+              <motion.div
+                key={show.title}
+                initial={false}
+                animate={{
+                  opacity: active ? 1 : 0,
+                  scale: active ? 1 : 1.06,
+                  filter: active ? "blur(0px)" : "blur(14px)",
+                }}
+                transition={{ duration: duration * 1.1, ease }}
+                className={`absolute inset-0 flex items-center ${active ? "" : "pointer-events-none"}`}
+              >
+                <PhotoRow show={show} eager={index === 0} />
+              </motion.div>
+            );
+          })}
+        </div>
 
         <motion.p
           aria-hidden="true"
@@ -190,7 +205,7 @@ function PhotoRow({ show, eager }: { show: Show; eager: boolean }) {
   return (
     <div
       ref={rowRef}
-      className="ukha-horizontal-gallery h-[52svh] w-full cursor-grab snap-x snap-mandatory overflow-x-auto overflow-y-hidden active:cursor-grabbing sm:h-[58svh]"
+      className="ukha-horizontal-gallery h-full w-full cursor-grab snap-x snap-mandatory overflow-x-auto overflow-y-hidden active:cursor-grabbing"
       onPointerDown={(event) => {
         if (event.pointerType !== "mouse" || !rowRef.current) return;
         drag.current = { x: event.clientX, left: rowRef.current.scrollLeft };
@@ -207,7 +222,7 @@ function PhotoRow({ show, eager }: { show: Show; eager: boolean }) {
       }}
     >
       {/* min-w-full + justify-center keeps a short row centred; a long one starts at the left edge. */}
-      <div className="flex h-full w-max min-w-full items-center justify-center gap-3 px-6 sm:gap-5 sm:px-10">
+      <div className="flex h-full w-max min-w-full items-center justify-center gap-3 px-6 sm:gap-5 sm:pl-0 sm:pr-10">
         {show.photos.map((photo, photoIndex) => (
           <Image
             key={photo.src}
@@ -215,12 +230,15 @@ function PhotoRow({ show, eager }: { show: Show; eager: boolean }) {
             alt={photo.alt}
             width={Math.round(1600 * photo.aspect)}
             height={1600}
-            sizes="(max-width: 640px) 80vw, 50vw"
+            sizes="(max-width: 640px) 80vw, 55vw"
             priority={eager && photoIndex === 0}
+            // Load every photo up front: the browser's lazy loading can skip a photo that sits
+            // in a hidden or sideways-scrolled row, leaving a blank gap when the show opens.
+            loading="eager"
             draggable={false}
-            // Each photo fits whole on screen (never cut at the edge) and snaps into place when
-            // swiped; phones get a smaller row.
-            className="h-auto max-h-[40svh] w-auto max-w-[78vw] flex-none snap-center select-none object-contain sm:max-h-full"
+            // Every photo in a row shares one height. The vw cap keeps a 4:3 photo narrower than
+            // the photo area, so each still fits whole and snaps into place when swiped.
+            className="h-[min(40svh,58vw)] w-auto flex-none snap-center select-none object-contain sm:h-[min(58svh,40vw)]"
           />
         ))}
       </div>
