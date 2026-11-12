@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CopyEmail } from "@/components/CopyEmail";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
 import { SwipeHint } from "@/components/SwipeHint";
@@ -62,6 +63,9 @@ export default function ArchiveNotePage() {
           />
         </section>
 
+        <section className="ukha-note ukha-contact flex justify-center pb-16 sm:pb-20">
+          <CopyEmail className="cursor-pointer text-inherit" />
+        </section>
       </FadeIn>
     </main>
   );

@@ -12,18 +12,19 @@ type HandwrittenNavProps = {
   expandCollections?: boolean;
 };
 
+// One shared opacity so every handwritten menu word reads at the same brightness.
+const NAV_OPACITY = "opacity-[0.88]";
+
 const navItems = [
   {
     // Wider than the others: its thin, long handwriting needs this width for its
-    // lowercase letters to match "archive" and "visit".
+    // lowercase letters to match "archive".
     href: "/wearable-line",
     label: "wearable line",
     src: "/images/ukha/collection-overlay-wearable-line.png",
     width: 2164,
     height: 339,
     className: "w-[min(58vw,430px)]",
-    // Its thin strokes need more opacity than archive/visit to read as clearly.
-    opacityClass: "opacity-[0.88]",
   },
   {
     href: "/collection",
@@ -32,7 +33,6 @@ const navItems = [
     width: 1492,
     height: 179,
     className: "w-[min(48vw,360px)]",
-    opacityClass: "opacity-100",
   },
   {
     href: "/archive-note",
@@ -41,17 +41,8 @@ const navItems = [
     width: 1470,
     height: 201,
     className: "w-[min(40vw,300px)]",
-    opacityClass: "opacity-[0.7]",
   },
-  {
-    href: "/offline-shop",
-    label: "visit",
-    src: "/images/ukha/nav-visit.png",
-    width: 1347,
-    height: 285,
-    className: "w-[min(32vw,240px)]",
-    opacityClass: "opacity-[0.7]",
-  },
+  // "visit" (/offline-shop) is hidden for now; the page itself still exists.
   {
     href: "/#home-menu",
     label: "menu",
@@ -59,7 +50,6 @@ const navItems = [
     width: 1464,
     height: 180,
     className: "w-[min(36vw,260px)]",
-    opacityClass: "opacity-[0.88]",
     isMenu: true,
   },
 ];
@@ -83,7 +73,7 @@ export function HandwrittenNav({
   const secondaryItems = visibleItems.slice(collectionIndex + 1);
 
   const imageClassName = (item: (typeof navItems)[number]) =>
-    `${item.className} ${item.opacityClass} relative h-auto object-contain ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"} transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100`;
+    `${item.className} ${NAV_OPACITY} relative h-auto object-contain ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"} transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100`;
 
   const menuTransition = {
     duration: 0.65,
@@ -190,7 +180,7 @@ export function HandwrittenNav({
                   width={item.width}
                   height={item.height}
                   sizes="(max-width: 640px) 62vw, 390px"
-                  className={`${item.className} h-auto object-contain opacity-75 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"}`}
+                  className={`${item.className} h-auto object-contain ${NAV_OPACITY} transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"}`}
                 />
               </Link>
             ))}

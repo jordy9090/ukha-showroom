@@ -6,6 +6,9 @@
 // the payment API only work when NEXT_PUBLIC_SHOP_ENABLED=true (after Toss approval).
 export const PURCHASE_ENABLED = process.env.NEXT_PUBLIC_SHOP_ENABLED === "true";
 
+// Prices are hidden on the list and product pages for now; set to true to show them again.
+export const SHOW_PRICES = false;
+
 export type WearableProduct = {
   id: string;
   title: string;
@@ -34,16 +37,6 @@ const RING_SIZE_OPTIONS = Array.from({ length: 16 }, (_, index) => index + 5); /
 
 export const wearableProducts: WearableProduct[] = [
   {
-    id: "flock-necklace",
-    title: "FLOCK NECKLACE",
-    material: "Brass",
-    description: "",
-    price: 79_000,
-    images: ["/images/ukha/flock-necklace-02.jpg", "/images/ukha/flock-necklace-01.jpg"],
-    sizeLabel: "One size",
-    madeToOrderWeeks: 2,
-  },
-  {
     id: "totem-ring",
     title: "TOTEM RING",
     material: "Brass",
@@ -58,17 +51,6 @@ export const wearableProducts: WearableProduct[] = [
     sizeLabel: "One size",
     madeToOrderWeeks: 2,
     customWord: { maxLength: 10 },
-  },
-  {
-    id: "joint-ring",
-    title: "JOINT RING",
-    material: "Brass",
-    description: "",
-    price: 59_000,
-    images: ["/images/ukha/joint-ring-01.jpg", "/images/ukha/joint-ring-02.jpg"],
-    sizeLabel: "Choose your ring size (KR)",
-    ringSizes: RING_SIZE_OPTIONS,
-    madeToOrderWeeks: 2,
   },
   {
     id: "wing-ring",
