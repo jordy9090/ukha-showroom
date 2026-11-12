@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function ShowroomHeader() {
+// "blend" inverts against whatever is behind; "white" keeps the logo and menu plain white
+// (for dark pages such as the archive).
+export function ShowroomHeader({ tone = "blend" }: { tone?: "blend" | "white" }) {
   return (
-    <header className="ukha-caption fixed left-0 top-0 z-20 flex w-full items-center justify-between px-5 py-5 mix-blend-difference sm:px-8">
+    <header
+      className={`ukha-caption fixed left-0 top-0 z-20 flex w-full items-center justify-between px-5 py-5 sm:px-8 ${tone === "blend" ? "mix-blend-difference" : ""}`}
+    >
       <Link
         href="/"
         aria-label="UKHA home"

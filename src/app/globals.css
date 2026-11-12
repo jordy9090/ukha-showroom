@@ -39,6 +39,29 @@ img {
   border: 0;
 }
 
+/* Thin page scrollbar. Chrome and Safari use the ::-webkit-scrollbar rules; the standard
+   properties are kept to Firefox because Chrome ignores the webkit rules once they're set. */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(32, 31, 27, 0.32);
+  border-radius: 4px;
+}
+
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(32, 31, 27, 0.32) transparent;
+  }
+}
+
 .ukha-horizontal-gallery {
   scrollbar-width: none;
 }

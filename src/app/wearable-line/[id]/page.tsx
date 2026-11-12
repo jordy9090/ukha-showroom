@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
-import { CartBar } from "@/components/CartBar";
 import { FadeIn } from "@/components/FadeIn";
 import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { formatKRW, formatPrice, getWearableProduct, PURCHASE_ENABLED, SHIPPING_FEE, SHOW_PRICES, wearableProducts } from "@/data/wearable";
+import { formatKRW, formatPrice, getWearableProduct, SHIPPING_FEE, SHOW_PRICES, wearableProducts } from "@/data/wearable";
 
 export function generateStaticParams() {
   return wearableProducts.map((product) => ({ id: product.id }));
@@ -46,7 +45,6 @@ export default async function WearableProductPage(props: PageProps<"/wearable-li
           <PurchaseOptions product={product} />
         </aside>
       </FadeIn>
-      {PURCHASE_ENABLED ? <CartBar /> : null}
     </main>
   );
 }

@@ -9,6 +9,7 @@ import {
   madeToOrderNotice,
   MAX_QUANTITY,
   PURCHASE_ENABLED,
+  SHOW_MADE_TO_ORDER_NOTICE,
   type WearableProduct,
 } from "@/data/wearable";
 import { addToCart, markCheckoutFromCart } from "@/lib/cart";
@@ -199,7 +200,7 @@ export function PurchaseOptions({ product }: { product: WearableProduct }) {
         </div>
       ) : null}
 
-      {product.madeToOrderWeeks ? (
+      {SHOW_MADE_TO_ORDER_NOTICE && product.madeToOrderWeeks ? (
         <div className="ukha-note space-y-3 leading-6 text-[var(--muted)]">
           {madeToOrderNotice(product.madeToOrderWeeks).map((line) => (
             <p key={line} className="break-keep">

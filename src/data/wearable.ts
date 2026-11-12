@@ -9,6 +9,9 @@ export const PURCHASE_ENABLED = process.env.NEXT_PUBLIC_SHOP_ENABLED === "true";
 // Prices are hidden on the list and product pages for now; set to true to show them again.
 export const SHOW_PRICES = false;
 
+// The made-to-order notice above the purchase buttons is hidden for now; set to true to show it.
+export const SHOW_MADE_TO_ORDER_NOTICE = false;
+
 export type WearableProduct = {
   id: string;
   title: string;

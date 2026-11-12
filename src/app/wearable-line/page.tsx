@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CartBar } from "@/components/CartBar";
 import { FadeIn } from "@/components/FadeIn";
-import { ShopFooter } from "@/components/ShopFooter";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { formatPrice, PURCHASE_ENABLED, SHOW_PRICES, wearableProducts } from "@/data/wearable";
+import { formatPrice, SHOW_PRICES, wearableProducts } from "@/data/wearable";
 
 export const metadata = {
   title: "Wearable Line — UKHA studio",
@@ -57,10 +55,9 @@ export default function WearableLinePage() {
             </li>
           ))}
         </ul>
-
-        <ShopFooter />
+        {/* The business-info footer (ShopFooter) and the cart bar (CartBar) are hidden for now;
+            add them back here and on the product page when purchases open. */}
       </FadeIn>
-      {PURCHASE_ENABLED ? <CartBar /> : null}
     </main>
   );
 }
