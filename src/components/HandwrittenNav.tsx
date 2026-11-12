@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type HandwrittenNavProps = {
   className?: string;
@@ -60,17 +61,17 @@ export function HandwrittenNav({
   adaptiveContrast = false,
   expandCollections = false,
 }: HandwrittenNavProps) {
-  const [collectionsOpen, setCollectionsOpen] = useState(false);
+  const router = useRouter();
+  // Set once "collection" is clicked: the other words fade out before the collection page
+  // opens, where the word itself glides to the left.
+  const [leaving, setLeaving] = useState(false);
   const visibleItems = includeMenu
     ? navItems
     : navItems.filter((item) => !item.isMenu);
-  const collectionIndex = visibleItems.findIndex(
-    (item) => item.label === "collection",
-  );
-  const collectionItem = visibleItems[collectionIndex];
-  // Items above "collection" hide while its submenu is open; the rest swap with it.
-  const leadingItems = visibleItems.slice(0, collectionIndex);
-  const secondaryItems = visibleItems.slice(collectionIndex + 1);
+
+  useEffect(() => {
+    if (expandCollections) router.prefetch("/collection");
+  }, [expandCollections, router]);
 
   const imageClassName = (item: (typeof navItems)[number]) =>
     `${item.className} ${NAV_OPACITY} relative h-auto object-contain ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"} transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100`;
@@ -81,140 +82,52 @@ export function HandwrittenNav({
   };
 
   return (
-    <motion.nav
-      layout
-      transition={{ layout: menuTransition }}
+    <nav
       aria-label="UKHA showroom navigation"
       className={`flex flex-col items-center ${expandCollections ? "gap-9 sm:gap-11" : "gap-5 sm:gap-6"} ${className}`}
     >
-      {/* Items above "collection" (Wearable Line) step aside while its submenu is open. */}
-      <AnimatePresence initial={false}>
-        {expandCollections && !collectionsOpen
-          ? leadingItems.map((item) => (
-              <motion.div
-                layout
-                key={item.href}
-                initial={{ opacity: 0, y: -10, filter: "blur(3px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -10, filter: "blur(3px)" }}
-                transition={menuTransition}
-                className="mb-3 sm:mb-5"
-              >
-                <Link
-                  href={item.href}
-                  aria-label={item.label}
-                  className="group relative block max-w-[92vw] outline-none transition duration-500 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-                >
-                  <Image
-                    src={item.src}
-                    alt=""
-                    width={item.width}
-                    height={item.height}
-                    sizes="(max-width: 640px) 48vw, 360px"
-                    className={imageClassName(item)}
-                  />
-                </Link>
-              </motion.div>
-            ))
-          : null}
-      </AnimatePresence>
-
-      {expandCollections ? (
-        <motion.button
-          layout
-          type="button"
-          aria-label="Show collections"
-          aria-expanded={collectionsOpen}
-          onClick={() => setCollectionsOpen((open) => !open)}
-          className="group relative block max-w-[92vw] cursor-pointer outline-none transition duration-500 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-        >
-          <Image
-            src={collectionItem.src}
-            alt=""
-            width={collectionItem.width}
-            height={collectionItem.height}
-            sizes="(max-width: 640px) 48vw, 360px"
-            className={imageClassName(collectionItem)}
-          />
-        </motion.button>
-      ) : null}
-
-      <AnimatePresence mode="popLayout" initial={false}>
-        {expandCollections && collectionsOpen ? (
+      {visibleItems.map((item) => {
+        const isCollection = expandCollections && item.href === "/collection";
+        return (
           <motion.div
-            layout
-            key="collection-links"
-            initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -10, filter: "blur(3px)" }}
+            key={item.href}
+            initial={false}
+            animate={
+              leaving && !isCollection
+                ? { opacity: 0, y: -8, filter: "blur(3px)" }
+                : { opacity: 1, y: 0, filter: "blur(0px)" }
+            }
             transition={menuTransition}
-            className="flex flex-col items-center gap-4 sm:gap-5"
+            // Wearable Line keeps its extra space above the rest on the home menu.
+            className={expandCollections && item.href === "/wearable-line" ? "mb-3 sm:mb-5" : ""}
           >
-            {[
-              {
-                href: "/collection/collection-02",
-                label: "PANOPTICON",
-                src: "/images/ukha/collection-overlay-panopticon.png",
-                width: 1125,
-                height: 300,
-                className: "w-[min(62vw,390px)]",
-              },
-              {
-                href: "/collection/liminal",
-                label: "LIMINAL",
-                src: "/images/ukha/collection-overlay-liminal.png",
-                width: 890,
-                height: 180,
-                className: "w-[min(54vw,340px)]",
-              },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-label={item.label}
-                className="group block max-w-[92vw] outline-none transition duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-              >
-                <Image
-                  src={item.src}
-                  alt=""
-                  width={item.width}
-                  height={item.height}
-                  sizes="(max-width: 640px) 62vw, 390px"
-                  className={`${item.className} h-auto object-contain ${NAV_OPACITY} transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 ${adaptiveContrast ? "brightness-0 invert mix-blend-difference" : "mix-blend-multiply"}`}
-                />
-              </Link>
-            ))}
+            <Link
+              href={item.href}
+              aria-label={item.label}
+              onClick={
+                isCollection
+                  ? (event) => {
+                      event.preventDefault();
+                      if (leaving) return;
+                      setLeaving(true);
+                      window.setTimeout(() => router.push("/collection"), 380);
+                    }
+                  : undefined
+              }
+              className="group relative block max-w-[92vw] outline-none transition duration-500 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+            >
+              <Image
+                src={item.src}
+                alt=""
+                width={item.width}
+                height={item.height}
+                sizes="(max-width: 640px) 48vw, 360px"
+                className={imageClassName(item)}
+              />
+            </Link>
           </motion.div>
-        ) : (
-          <motion.div
-            layout
-            key="main-links"
-            initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -10, filter: "blur(3px)" }}
-            transition={menuTransition}
-            className="flex flex-col items-center gap-5 sm:gap-6"
-          >
-            {(expandCollections ? secondaryItems : visibleItems).map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-label={item.label}
-                className="group relative block max-w-[92vw] outline-none transition duration-500 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-              >
-                <Image
-                  src={item.src}
-                  alt=""
-                  width={item.width}
-                  height={item.height}
-                  sizes="(max-width: 640px) 48vw, 360px"
-                  className={imageClassName(item)}
-                />
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+        );
+      })}
+    </nav>
   );
 }

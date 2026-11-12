@@ -26,6 +26,7 @@ export type ArchiveNote = ShowroomImage & {
 export type Collection = {
   slug: string;
   title: string;
+  year: string;
   handwrittenTitleImage?: string;
   coverImage?: string;
   description: string;
@@ -45,6 +46,7 @@ export const collections: Collection[] = [
   {
     slug: "liminal",
     title: "LIMINAL",
+    year: "2025",
     handwrittenTitleImage: ukhaImage("liminal-title.png"),
     coverImage: ukhaImage("liminal-cover-transparent.png"),
     description:
@@ -149,6 +151,7 @@ export const collections: Collection[] = [
   {
     slug: "collection-02",
     title: "PANOPTICON",
+    year: "2026",
     handwrittenTitleImage: ukhaImage("panopticon-title.png"),
     coverImage: ukhaImage("collection-02-cover.png"),
     description: "PANOPTICON reimagines the prison as a stage for everyday role-playing. Conscious of the gaze of others, we perform identities shaped by relationships and external conditions. Within this space of invisible surveillance, the collection imagines the characters who might inhabit each cell.",
