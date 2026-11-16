@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { formatPrice, SHOW_PRICES, wearableProducts } from "@/data/wearable";
+import { formatPrice, formatStock, SHOW_PRICES, wearableProducts } from "@/data/wearable";
 
 export const metadata = {
   title: "Wearable Line — UKHA studio",
@@ -43,11 +43,18 @@ export default function WearableLinePage() {
                 <p className="ukha-piece-title mt-5 text-[12px] transition duration-300 group-hover:-translate-y-0.5">
                   {product.title}
                 </p>
+                {/* Pieces with a stock count show it; the rest are made to order. */}
                 {SHOW_PRICES ? (
                   <p className="ukha-note mt-2 text-[var(--muted)]">
                     {formatPrice(product.price)}
-                    {product.madeToOrderWeeks ? " · Made to order" : ""}
+                    {product.stock !== undefined
+                      ? ` · ${formatStock(product.stock)}`
+                      : product.madeToOrderWeeks
+                        ? " · Made to order"
+                        : ""}
                   </p>
+                ) : product.stock !== undefined ? (
+                  <p className="ukha-note mt-2 text-[var(--muted)]">{formatStock(product.stock)}</p>
                 ) : product.madeToOrderWeeks ? (
                   <p className="ukha-note mt-2 text-[var(--muted)]">Made to order</p>
                 ) : null}

@@ -28,10 +28,11 @@ export type ShowcaseEntry = {
   label: string;
 } & (
   // A single row, centred in the photo area…
-  | { photos: ShowcasePhoto[]; rows?: never }
+  | { photos: ShowcasePhoto[]; rows?: never; intro?: never }
   // …or several rows stacked top to bottom (e.g. the pieces of a collection). The stack
   // scrolls on its own; once it reaches the end, scrolling carries on to the next entry.
-  | { rows: ShowcaseRow[]; photos?: never }
+  // An optional intro paragraph (e.g. the collection statement) sits above the first row.
+  | { rows: ShowcaseRow[]; photos?: never; intro?: string }
 );
 
 // Scroll distances in % of the screen height: a short run on the plain list before the first
@@ -199,6 +200,11 @@ export function ScrollShowcase({
                     }}
                     className="ukha-horizontal-gallery h-full w-full overflow-y-auto py-10 sm:py-[14svh]"
                   >
+                    {entry.intro ? (
+                      <p className="mb-12 max-w-xl whitespace-pre-line px-6 text-[12px] leading-[1.9] tracking-[0.02em] text-white/75 sm:mb-16 sm:pl-0 sm:pr-10 sm:text-[13px]">
+                        {entry.intro}
+                      </p>
+                    ) : null}
                     <div className="flex flex-col gap-10 sm:gap-14">
                       {entry.rows.map((row, rowIndex) => (
                         <div key={row.key}>

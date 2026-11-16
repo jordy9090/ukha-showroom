@@ -11,6 +11,7 @@ export default function CollectionPage() {
   const entries: ShowcaseEntry[] = [...collections].reverse().map((collection) => ({
     key: collection.slug,
     label: `${collection.year} ${collection.title}`,
+    intro: collection.description,
     rows: collection.pieces
       .filter((piece) => piece.images.length > 0)
       .map((piece) => ({

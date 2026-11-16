@@ -13,6 +13,7 @@ import {
   type WearableProduct,
 } from "@/data/wearable";
 import { addToCart, markCheckoutFromCart } from "@/lib/cart";
+import { PurchaseInquiry } from "@/components/PurchaseInquiry";
 
 export function PurchaseOptions({ product }: { product: WearableProduct }) {
   const router = useRouter();
@@ -210,13 +211,9 @@ export function PurchaseOptions({ product }: { product: WearableProduct }) {
         </div>
       ) : null}
 
+      {/* While online buying is off, visitors leave a purchase inquiry instead. */}
       {!purchasable ? (
-        <p
-          aria-disabled="true"
-          className="ukha-note w-full cursor-default select-none border border-[var(--line)] py-4 text-center tracking-[0.22em]!"
-        >
-          준비중 · COMING SOON
-        </p>
+        <PurchaseInquiry product={product} />
       ) : (
         <div className="space-y-3">
           <button

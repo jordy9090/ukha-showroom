@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { HorizontalArtworkGallery } from "@/components/HorizontalArtworkGallery";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { ShowroomHeader } from "@/components/ShowroomHeader";
-import { formatKRW, formatPrice, getWearableProduct, SHIPPING_FEE, SHOW_PRICES, wearableProducts } from "@/data/wearable";
+import { formatKRW, formatPrice, formatStock, getWearableProduct, SHIPPING_FEE, SHOW_PRICES, wearableProducts } from "@/data/wearable";
 
 export function generateStaticParams() {
   return wearableProducts.map((product) => ({ id: product.id }));
@@ -30,6 +30,7 @@ export default async function WearableProductPage(props: PageProps<"/wearable-li
             <section>
               <p className="ukha-note">{product.material}</p>
               <p className="ukha-note">Size: {product.sizeLabel}</p>
+              {product.stock !== undefined ? <p className="ukha-note">{formatStock(product.stock)}</p> : null}
               {product.customWord ? (
                 <p className="ukha-note">Design: original or one custom word</p>
               ) : null}
