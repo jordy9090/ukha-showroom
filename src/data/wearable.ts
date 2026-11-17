@@ -97,7 +97,7 @@ export const wearableProducts: WearableProduct[] = [
   {
     id: "liminal-01",
     // Liminal and Panopticon pieces: two of each.
-    stock: 2,
+    stock: 3,
     title: "LIMINAL: 01",
     material: "Brass",
     description: "",
@@ -118,7 +118,7 @@ export const wearableProducts: WearableProduct[] = [
   {
     id: "liminal-03",
     // Liminal and Panopticon pieces: two of each.
-    stock: 2,
+    stock: 3,
     title: "LIMINAL: 03",
     material: "Brass",
     description: "",
@@ -137,7 +137,7 @@ export const wearableProducts: WearableProduct[] = [
   {
     id: "liminal-05",
     // Liminal and Panopticon pieces: two of each.
-    stock: 2,
+    stock: 3,
     title: "LIMINAL: 05",
     material: "Brass",
     description: "",
@@ -157,7 +157,7 @@ export const wearableProducts: WearableProduct[] = [
   {
     id: "panopticon-05",
     // Liminal and Panopticon pieces: two of each.
-    stock: 2,
+    stock: 3,
     title: "PANOPTICON: 05",
     material: "Brass",
     description: "Is isolation ever complete?",
@@ -177,7 +177,7 @@ export const wearableProducts: WearableProduct[] = [
   {
     id: "panopticon-07",
     // Liminal and Panopticon pieces: two of each.
-    stock: 2,
+    stock: 3,
     title: "PANOPTICON: 07",
     material: "Brass",
     description: "Can resistance be contained?",
@@ -197,7 +197,7 @@ export const wearableProducts: WearableProduct[] = [
   {
     id: "panopticon-08",
     // Liminal and Panopticon pieces: two of each.
-    stock: 2,
+    stock: 3,
     title: "PANOPTICON: 08",
     material: "Brass",
     description: "When does repetition become instinct?",
@@ -259,9 +259,13 @@ export function madeToOrderNotice(weeks: number) {
   ];
 }
 
-// "재고 2 · 2 in stock", or "Sold out" at zero.
+// "Limited · 3 pieces", or "Sold out" at zero.
 export function formatStock(stock: number) {
-  return stock > 0 ? `재고 ${stock} · ${stock} in stock` : "품절 · Sold out";
+  if (stock <= 0) {
+    return "Sold out";
+  }
+
+  return `Limited · ${stock} ${stock === 1 ? "piece" : "pieces"}`;
 }
 
 // Studio Instagram, for purchase inquiries by DM.
