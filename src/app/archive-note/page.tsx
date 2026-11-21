@@ -14,6 +14,11 @@ const shows: ShowcaseEntry[] = [
         alt: "2026 Milano Jewelry Week Gallery Award",
         aspect: 4 / 3,
       },
+      {
+        src: "/images/ukha/archive-milano-jewelry-week-2026-02.jpg",
+        alt: "Artistar Jewels Network Award, Milano Jewelry Week 2026",
+        aspect: 3 / 4,
+      },
     ],
   },
   {
